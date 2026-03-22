@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jigme Wangchuk — Senior Forestry Officer, Bhutan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#1A2B3C; --navy-lt:#2E4560;
+  --charcoal:#1A1A1A; --slate:#3D4F5E; --muted:#8A9BAA;
+  --white:#FFFFFF; --off:#FAFAF8; --cream:#F5F2EC; --beige:#EDE8DF;
+  --border:#E0DBD3; --border-lt:#EDEAE4;
+  --gold:#B8862A; --gold-lt:#D4A647; --gold-pale:#F2E8D4;
+  --green:#2A5C45; --green-mid:#3A7059; --green-pale:#EAF2EE;
+  --ease:cubic-bezier(.25,.46,.45,.94); --r:8px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--off);color:var(--charcoal);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+
+.page{display:none;}
+.page.active{display:block;}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:900;height:68px;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 3.5rem;box-shadow:0 2px 20px rgba(0,0,0,.22);}
+.nav-brand{display:flex;align-items:center;gap:.75rem;cursor:pointer;}
+.nav-mark{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-lt));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);flex-shrink:0;}
+.nav-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.2;}
+.nav-name span{display:block;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+.nav-links{display:flex;gap:.1rem;list-style:none;align-items:center;}
+.nav-links button{padding:.5rem .8rem;background:none;border:none;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border-radius:4px;transition:color .2s,background .2s;}
+.nav-links button:hover{color:var(--white);background:rgba(255,255,255,.07);}
+.nav-links button.on{color:var(--gold-lt);}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
+.ham span{display:block;width:22px;height:2px;background:rgba(255,255,255,.65);border-radius:2px;}
+
+/* LAYOUT */
+.wrap{max-width:1160px;margin:0 auto;padding:0 3.5rem;}
+.sec{padding:5rem 0;}
+.label{display:inline-flex;align-items:center;gap:.6rem;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.label::before{content:'';display:block;width:26px;height:2px;background:var(--gold);}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:2.2rem;}
+.sec-h em{color:var(--gold);font-style:italic;}
+.hr{width:100%;height:1px;background:var(--border);margin:3rem 0;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.8rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;transition:all .22s var(--ease);}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:var(--navy);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,134,42,.4);}
+.btn-ghost{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);}
+.btn-ghost:hover{background:rgba(255,255,255,.12);color:var(--white);border-color:rgba(255,255,255,.4);}
+.tag-tg{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:var(--green-pale);color:var(--green);}
+.tag-tn{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:rgba(26,43,60,.08);color:var(--navy);}
+.tag-to{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:var(--gold-pale);color:var(--gold);}
+
+/* TABS */
+.tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:2.5rem;}
+.tab{padding:.75rem 1.5rem;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.tab.on{color:var(--navy);border-bottom-color:var(--navy);}
+.tab:hover:not(.on){color:var(--slate);}
+.panel{display:none;}
+.panel.on{display:block;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s var(--ease),transform .55s var(--ease);}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+/* ════ PAGE 1 — HOME ════ */
+#page-home{background:var(--navy);}
+.hero{min-height:100vh;padding-top:68px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 460px;grid-template-rows:1fr auto;}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 70% at 20% 50%,rgba(42,92,69,.22) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 90% 10%,rgba(184,134,42,.1) 0%,transparent 60%);}
+.hero::after{content:'';position:absolute;inset:0;z-index:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.025) 1px,transparent 0);background-size:44px 44px;}
+.hero-l{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5rem;}
+.hero-kicker{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:1.8rem;animation:fadeUp .7s var(--ease) both;}
+.hero-kicker::before{content:'';width:24px;height:2px;background:var(--gold);display:block;}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:900;color:var(--white);line-height:1.03;margin-bottom:.25rem;animation:fadeUp .7s var(--ease) .1s both;}
+.hero-h1 i{color:#B0CEBC;font-style:italic;font-weight:400;}
+.hero-role{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);border-left:3px solid var(--gold);padding-left:.9rem;margin:1.4rem 0 1.8rem;animation:fadeUp .7s var(--ease) .2s both;}
+.hero-bio{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.3vw,1.18rem);line-height:1.85;color:rgba(255,255,255,.55);max-width:500px;margin-bottom:2.8rem;animation:fadeUp .7s var(--ease) .3s both;}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;animation:fadeUp .7s var(--ease) .4s both;}
+.hero-r{position:relative;z-index:2;overflow:hidden;}
+.hero-r img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.hero-r::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,var(--navy) 0%,rgba(26,43,60,.15) 40%,transparent 60%),linear-gradient(to top,var(--navy) 0%,transparent 35%);}
+.hero-r-ph{width:100%;height:100%;min-height:500px;background:linear-gradient(160deg,#1E3650,#0F1E2D);display:flex;align-items:center;justify-content:center;font-size:5rem;color:rgba(255,255,255,.08);}
+.hero-stats{grid-column:1/-1;position:relative;z-index:3;background:rgba(10,18,26,.88);backdrop-filter:blur(12px);border-top:1px solid rgba(184,134,42,.18);display:grid;grid-template-columns:repeat(3,1fr);animation:fadeUp .7s var(--ease) .6s both;}
+.stat-c{padding:1.4rem 2rem;border-right:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:1rem;}
+.stat-c:last-child{border-right:none;}
+.stat-ico{font-size:1.4rem;opacity:.65;}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--gold-lt);line-height:1;display:block;}
+.stat-lbl{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem;display:block;}
+
+/* PAGE BAND */
+.page-band{background:var(--navy);padding:5rem 0 4rem;}
+.band-grid{display:grid;grid-template-columns:1fr 280px;gap:4rem;align-items:center;}
+.band-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1rem;}
+.band-title em{color:var(--gold-lt);font-style:italic;}
+.band-para{font-size:.95rem;line-height:1.9;color:rgba(255,255,255,.5);font-weight:300;max-width:540px;}
+.photo-frame{border-radius:var(--r);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);aspect-ratio:3/4;}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.photo-ph{width:100%;height:100%;min-height:240px;background:linear-gradient(160deg,#1E3650,#0F1E2D);display:flex;align-items:center;justify-content:center;font-size:4rem;}
+
+/* ABOUT */
+#page-about{background:var(--off);}
+.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:3.5rem;}
+.pc{background:var(--white);padding:1.3rem 1.5rem;}
+.pc-k{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.pc-v{font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.4;}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:2.5rem;}
+.tl::before{content:'';position:absolute;left:8px;top:10px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--navy),var(--border));}
+.tl-item{position:relative;margin-bottom:3rem;}
+.tl-dot{position:absolute;left:-2.3rem;top:4px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--navy);box-shadow:0 0 0 3px rgba(26,43,60,.1);}
+.tl-dot.g{border-color:var(--gold);}
+.tl-period{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.tl-role{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
+.tl-org{font-size:.85rem;font-weight:600;color:var(--green);margin-bottom:.9rem;}
+.tl-ul{list-style:none;}
+.tl-ul li{font-size:.88rem;color:var(--slate);line-height:1.8;padding:.2rem 0 .2rem 1.3rem;position:relative;}
+.tl-ul li::before{content:'›';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:1.1rem;}
+.tl-tags{margin-top:.75rem;display:flex;flex-wrap:wrap;gap:.4rem;}
+
+/* PROJECT CARDS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.pc-card{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s;}
+.pc-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.09);}
+.pc-band{height:4px;}
+.b-navy{background:linear-gradient(90deg,var(--navy),var(--navy-lt));}
+.b-green{background:linear-gradient(90deg,var(--green),var(--green-mid));}
+.b-gold{background:linear-gradient(90deg,var(--gold),var(--gold-lt));}
+.b-teal{background:linear-gradient(90deg,#1a6b7a,#2a9aad);}
+.pc-body{padding:1.4rem 1.6rem;flex:1;}
+.pc-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem;align-items:center;}
+.pc-yr{font-size:.6rem;font-weight:600;color:var(--muted);margin-left:auto;}
+.pc-upcoming{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:#e8f4f8;color:#1a6b7a;border:1px solid #9fd0dd;}
+.pc-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:.6rem;}
+.pc-desc{font-size:.83rem;color:var(--slate);line-height:1.75;}
+.pc-foot{padding:.75rem 1.6rem;border-top:1px solid var(--border-lt);}
+.pc-donor{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+
+/* RESEARCH */
+#page-research{background:var(--off);}
+.field-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.6rem;margin-bottom:5rem;}
+.fc{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s;}
+.fc:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.1);}
+.fc-top{background:var(--navy);padding:1.3rem 1.6rem;display:flex;justify-content:space-between;align-items:flex-start;}
+.fc-year{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:rgba(255,255,255,.1);line-height:1;user-select:none;}
+.fc-badge{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border-radius:20px;background:rgba(184,134,42,.2);border:1px solid rgba(184,134,42,.4);color:var(--gold-lt);}
+.fc-body{padding:1.3rem 1.6rem;flex:1;}
+.fc-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.65rem;line-height:1.35;}
+.fc-desc{font-size:.83rem;color:var(--slate);line-height:1.78;}
+.fc-foot{padding:.85rem 1.6rem;border-top:1px solid var(--border-lt);}
+.dl-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.48rem 1.05rem;background:var(--navy);color:rgba(255,255,255,.75);border-radius:4px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;text-decoration:none;}
+.dl-btn:hover{background:var(--navy-lt);color:var(--white);transform:translateY(-1px);}
+.dl-btn svg{width:12px;height:12px;fill:currentColor;flex-shrink:0;}
+.int-lbl{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+
+.j-list{list-style:none;}
+.j-item{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;padding:1.5rem 0;border-bottom:1px solid var(--border-lt);}
+.j-item:last-child{border-bottom:none;}
+.j-badges{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem;flex-wrap:wrap;}
+.jy{font-size:.62rem;font-weight:700;background:var(--navy);color:var(--gold-lt);padding:.2rem .6rem;border-radius:3px;}
+.jt{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:var(--green-pale);color:var(--green);}
+.j-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.45;margin-bottom:.3rem;}
+.j-journal{font-family:'Playfair Display',serif;font-style:italic;font-size:.88rem;color:var(--gold);}
+.j-authors{font-size:.72rem;color:var(--muted);font-weight:500;margin-top:.15rem;}
+
+.t-list{list-style:none;}
+.t-item{display:grid;grid-template-columns:70px 1fr;gap:1.2rem;align-items:center;padding:1rem 1.2rem;border-radius:var(--r);transition:background .2s;}
+.t-item:hover{background:var(--beige);}
+.t-yr{font-size:.68rem;font-weight:700;color:var(--gold);text-align:center;}
+.t-name{font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.45;margin-bottom:.12rem;}
+.t-org{font-size:.72rem;color:var(--muted);font-weight:500;}
+
+/* SKILLS */
+#page-skills{background:var(--off);}
+.sk-band{background:linear-gradient(160deg,var(--navy) 0%,#1E3650 100%);padding:4.5rem 0 3.5rem;}
+.sk-band-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;color:var(--white);}
+.sk3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem;}
+.sk-box{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);padding:1.6rem;transition:box-shadow .2s;}
+.sk-box:hover{box-shadow:0 6px 20px rgba(0,0,0,.07);}
+.sk-hd{display:flex;align-items:center;gap:.7rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem;padding-bottom:.8rem;border-bottom:2px solid var(--navy);}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.tag{font-size:.72rem;font-weight:500;padding:.28rem .72rem;border-radius:20px;background:var(--beige);border:1px solid var(--border);color:var(--slate);transition:all .18s;}
+.tag:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:4rem;}
+.cert-c{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);padding:1.15rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:box-shadow .2s;}
+.cert-c:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.cert-ico{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--navy),var(--navy-lt));display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.cert-nm{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:.18rem;}
+.cert-by{font-size:.68rem;font-weight:500;color:var(--muted);}
+.aw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.3rem;}
+.aw-card{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);padding:1.8rem;position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s;}
+.aw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));}
+.aw-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.08);}
+.aw-ico{font-size:1.9rem;margin-bottom:.8rem;}
+.aw-t{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.45rem;line-height:1.35;}
+.aw-d{font-size:.83rem;color:var(--slate);line-height:1.7;}
+
+/* GALLERY */
+#page-gallery{background:var(--off);}
+.gallery-band{background:var(--navy);padding:4.5rem 0 3.5rem;}
+.gallery-band-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;color:var(--white);}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;padding:4rem 0;}
+.gal-item{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;background:var(--navy);}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease),filter .4s;}
+.gal-item:hover img{transform:scale(1.06);filter:brightness(.75);}
+.gal-caption{position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem;background:linear-gradient(to top,rgba(10,20,30,.85),transparent);color:var(--white);font-size:.75rem;font-weight:500;letter-spacing:.04em;line-height:1.4;transform:translateY(100%);transition:transform .3s var(--ease);}
+.gal-item:hover .gal-caption{transform:translateY(0);}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;}
+.lightbox.open{display:flex;}
+.lb-img{max-width:90vw;max-height:88vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6);object-fit:contain;}
+.lb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,.6);font-size:2rem;cursor:pointer;transition:color .2s;}
+.lb-close:hover{color:var(--white);}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;cursor:pointer;transition:background .2s;}
+.lb-prev{left:1.5rem;}
+.lb-next{right:1.5rem;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.2);}
+.lb-caption{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.65);font-size:.8rem;letter-spacing:.06em;text-align:center;max-width:600px;}
+
+/* CONTACT */
+#page-contact{background:var(--navy);}
+.ct-hero{background:linear-gradient(160deg,#0F1E2D,var(--navy-lt));padding:5.5rem 0 4.5rem;}
+.ct-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:.9rem;}
+.ct-title em{color:var(--gold-lt);font-style:italic;}
+.ct-sub{font-family:'Playfair Display',serif;font-size:1.05rem;color:rgba(255,255,255,.42);max-width:520px;line-height:1.8;}
+.ct-body{display:grid;grid-template-columns:1fr 420px;gap:4rem;padding:4rem 0;}
+.ct-links{display:flex;flex-direction:column;gap:.85rem;}
+.cl{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);color:rgba(255,255,255,.65);transition:all .22s;}
+.cl:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:var(--white);transform:translateX(4px);}
+.cl-ico{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:rgba(184,134,42,.15);border:1px solid rgba(184,134,42,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.cl-lbl{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:.18rem;}
+.cl-val{font-size:.85rem;font-weight:500;}
+.ct-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:2.4rem;}
+.ct-form h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1.8rem;}
+.fg{margin-bottom:1.2rem;}
+.fg label{display:block;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.42rem;}
+.fg input,.fg textarea{width:100%;padding:.76rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s;resize:none;}
+.fg input:focus,.fg textarea:focus{border-color:rgba(184,134,42,.6);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2);}
+.fg textarea{height:100px;}
+.form-send{width:100%;padding:.88rem;background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:var(--navy);border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .22s;}
+.form-send:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(184,134,42,.4);}
+.form-note{text-align:center;margin-top:.75rem;font-size:.62rem;color:rgba(255,255,255,.25);}
+
+footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);}
+
+/* MOBILE MENU */
+.mob{position:fixed;inset:0;z-index:950;background:var(--navy);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.8rem;transform:translateX(-100%);transition:transform .35s var(--ease);}
+.mob.open{transform:translateX(0);}
+.mob button,.mob a{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:600;color:rgba(255,255,255,.65);background:none;border:none;transition:color .2s;}
+.mob button:hover,.mob a:hover{color:var(--gold-lt);}
+.mob-x{position:absolute;top:1.5rem;right:2rem;font-size:1.5rem;background:none;border:none;color:rgba(255,255,255,.45);}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}.hero-r{display:none;}.hero-l{padding:5rem 2rem 5rem 3rem;}
+  .hero-stats{grid-template-columns:repeat(3,1fr);}
+  .band-grid{grid-template-columns:1fr;}.band-grid .photo-frame{max-width:200px;}
+  .sk3{grid-template-columns:repeat(2,1fr);}.ct-body{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  #nav{padding:0 1.5rem;}.nav-links{display:none;}.ham{display:flex;}
+  .wrap{padding:0 1.5rem;}.sec{padding:3.5rem 0;}
+  .profile-grid{grid-template-columns:1fr 1fr;}.sk3{grid-template-columns:1fr;}
+  .field-grid{grid-template-columns:1fr;}.aw-grid{grid-template-columns:1fr 1fr;}
+  .j-item{grid-template-columns:1fr;}.hero-stats{grid-template-columns:1fr 1fr 1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:500px){
+  .profile-grid{grid-template-columns:1fr;}.aw-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr;}.gallery-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-brand" onclick="goTo('home')">
+    <div class="nav-mark">JW</div>
+    <div class="nav-name">Jigme Wangchuk<span>Senior Forestry Officer &middot; Bhutan</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><button id="nb-home"     onclick="goTo('home')"    class="on">Home</button></li>
+    <li><button id="nb-about"    onclick="goTo('about')">About</button></li>
+    <li><button id="nb-research" onclick="goTo('research')">Research</button></li>
+    <li><button id="nb-skills"   onclick="goTo('skills')">Skills &amp; Awards</button></li>
+    <li><button id="nb-gallery"  onclick="goTo('gallery')">Gallery</button></li>
+    <li><button id="nb-contact"  onclick="goTo('contact')">Contact</button></li>
+  </ul>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob" id="mob">
+  <button class="mob-x" onclick="closeMob()">&#10005;</button>
+  <button onclick="goTo('home');closeMob()">Home</button>
+  <button onclick="goTo('about');closeMob()">About</button>
+  <button onclick="goTo('research');closeMob()">Research</button>
+  <button onclick="goTo('skills');closeMob()">Skills &amp; Awards</button>
+  <button onclick="goTo('gallery');closeMob()">Gallery</button>
+  <button onclick="goTo('contact');closeMob()">Contact</button>
+</div>
+
+
+<!-- ════════════════════ PAGE 1 — HOME ════════════════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-l">
+      <div class="hero-kicker">Senior Forestry Officer &middot; Bhutan</div>
+      <h1 class="hero-h1">Jigme<br/><i>Wangchuk</i></h1>
+      <p class="hero-role">Department of Forests &amp; Park Services &middot; Ministry of Energy &amp; Natural Resources</p>
+      <p class="hero-bio">Advancing biodiversity conservation, forest fire resilience, and sustainable ecosystems across Bhutan's diverse landscapes — through applied science, evidence-based policy, and community stewardship.</p>
+      <div class="hero-btns">
+        <button class="btn btn-gold" onclick="goTo('research')">Explore Research &#8599;</button>
+        <button class="btn btn-ghost" onclick="goTo('about')">Professional Profile</button>
+        <button class="btn btn-ghost" onclick="goTo('gallery')">View Gallery</button>
+      </div>
+    </div>
+    <div class="hero-r">
+      <img src="Files/Profile image.jpg" alt="Jigme Wangchuk" onerror="this.outerHTML='&lt;div class=&quot;hero-r-ph&quot;&gt;&#127807;&lt;/div&gt;'"/>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-c"><div class="stat-ico">&#127807;</div><div><span class="stat-num">6+</span><span class="stat-lbl">Years Experience</span></div></div>
+      <div class="stat-c"><div class="stat-ico">&#128196;</div><div><span class="stat-num">12+</span><span class="stat-lbl">Publications</span></div></div>
+      <div class="stat-c"><div class="stat-ico">&#128293;</div><div><span class="stat-num">National</span><span class="stat-lbl">Fire Management Focal</span></div></div>
+    </div>
+  </div>
+  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+</div>
+
+
+<!-- ════════════════════ PAGE 2 — ABOUT ════════════════════ -->
+<div class="page" id="page-about">
+  <div class="page-band">
+    <div class="wrap">
+      <div class="band-grid">
+        <div>
+          <div class="label" style="color:var(--gold-lt);">Professional Profile</div>
+          <h1 class="band-title">Forestry &amp;<br/><em>Conservation</em><br/>Professional</h1>
+          <p class="band-para">Comprehensive experience in biodiversity conservation, ecological research, and forest management across Bhutan's diverse landscapes.</p>
+          <div style="margin-top:1.8rem;">
+            <a href="CVs/CURRICULUM VITAE.pdf" download class="btn btn-gold">&#8595; Download Full CV</a>
+          </div>
+        </div>
+        <div>
+          <div class="photo-frame">
+            <img src="Files/Profile image.jpg" alt="Jigme Wangchuk" onerror="this.outerHTML='&lt;div class=&quot;photo-ph&quot;&gt;&#127807;&lt;/div&gt;'"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="label">At a Glance</div>
+    <div class="profile-grid reveal">
+      <div class="pc"><div class="pc-k">Current Role</div><div class="pc-v">Senior Forestry Officer</div></div>
+      <div class="pc"><div class="pc-k">Organisation</div><div class="pc-v">Dept. of Forests &amp; Park Services</div></div>
+      <div class="pc"><div class="pc-k">Division</div><div class="pc-v">Forest Resources Planning &amp; Management</div></div>
+      <div class="pc"><div class="pc-k">Location</div><div class="pc-v">&#128205; 11001, Thimphu, Bhutan</div></div>
+      <div class="pc"><div class="pc-k">Education</div><div class="pc-v">B.Sc. Forestry &middot; Royal University of Bhutan</div></div>
+      <div class="pc"><div class="pc-k">Languages</div><div class="pc-v">Dzongkha &middot; English &middot; Hindi &middot; Nepali</div></div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div style="max-width:800px;margin-bottom:3.5rem;">
+      <div class="label">Background</div>
+      <h2 class="sec-h">About Me</h2>
+      <p style="font-family:'Playfair Display',serif;font-size:1.05rem;line-height:1.9;color:var(--slate);margin-bottom:1.2rem;">I am a forestry and conservation professional with comprehensive experience in biodiversity conservation, ecological research, and forest management in Bhutan. Currently serving under the Forest Resources Planning and Management Division, Department of Forests and Park Services, I am engaged in national-level coordination, planning, and technical support related to forest fires, and forest pest and disease management.</p>
+      <p style="font-family:'Playfair Display',serif;font-size:1.05rem;line-height:1.9;color:var(--slate);margin-bottom:1.2rem;">As the national focal for forest fire prevention and management, I oversee policy implementation, inter-agency coordination, and capacity-building initiatives to enhance fire resilience across forest landscapes. In addition, I am responsible for monitoring and management of forest pests and diseases, contributing to the health and productivity of Bhutan's forest ecosystems.</p>
+      <p style="font-family:'Playfair Display',serif;font-size:1.05rem;line-height:1.9;color:var(--slate);margin-bottom:1.2rem;">Previously, I worked under the Divisional Forest Office, Dagana, where I was actively involved in field-based monitoring, research, and management of forest ecosystems. My professional focus included wildlife monitoring, fish diversity and distribution studies, high conservation value (HCV) area management, community forestry, and human–wildlife interactions. I also contributed to conservation assessments, management effectiveness tracking (METT+), and spatial analysis using GIS and remote sensing tools to support evidence-based decision-making.</p>
+      <p style="font-family:'Playfair Display',serif;font-size:1.05rem;line-height:1.9;color:var(--slate);">Guided by Bhutan's constitutional mandate on environmental stewardship, I remain dedicated to conserving biodiversity, strengthening community livelihoods, and promoting science-based forest and ecosystem management.</p>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="label">Career</div>
+    <h2 class="sec-h">Work Experience</h2>
+
+    <div class="tabs" id="exp-tabs">
+      <button class="tab on" onclick="switchTab('exp-tabs','exp-pos',this)">Positions Held</button>
+      <button class="tab"    onclick="switchTab('exp-tabs','exp-proj',this)">Projects &amp; Assignments</button>
+    </div>
+
+    <!-- POSITIONS HELD — only 3 roles -->
+    <div class="panel on" id="exp-pos">
+      <div class="tl">
+
+        <div class="tl-item reveal">
+          <div class="tl-dot g"></div>
+          <div class="tl-period">January 2026 &ndash; Present &middot; 3 months</div>
+          <div class="tl-role">Senior Forestry Officer</div>
+          <div class="tl-org">Forest Resources Planning &amp; Management Division &middot; Dept. of Forests and Park Services &middot; &#128205; 11001, Thimphu, Bhutan</div>
+          <ul class="tl-ul">
+            <li>Responsible for the national Forest Fire Management Programme — overseeing policy development, inter-agency coordination, and countrywide implementation.</li>
+            <li>Lead the Forest Pests and Diseases Management Programme, coordinating surveillance, monitoring, and technical response across all Dzongkhags.</li>
+            <li>Conduct spatial analysis using GIS and remote sensing to underpin evidence-based national forestry planning and resource allocation.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag-tn">GIS</span><span class="tag-tn">Forest Fire</span><span class="tag-tn">Pest Management</span><span class="tag-tn">Policy</span></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot g"></div>
+          <div class="tl-period">January 2025 &ndash; January 2026 &middot; 1 year 1 month</div>
+          <div class="tl-role">Senior Forestry Officer</div>
+          <div class="tl-org">Divisional Forest Office, Dagana &middot; Dept. of Forests and Park Services &middot; Dagana, Bhutan</div>
+          <ul class="tl-ul">
+            <li>Led the Forest Resources Planning and Management Section (FRPMS), responsible for forest resource planning, sustainable forest management, and coordination of landscape-level conservation initiatives.</li>
+            <li>Oversaw and supported implementation of the IKI Living Landscape Project and the UNEP/SAFE Project across the Dagana landscape.</li>
+            <li>Coordinated multi-stakeholder engagement for High Conservation Value Area (HCVA) identification and management prescription formulation for Namchella Catchment Area.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag-tg">IKI Living Landscape</span><span class="tag-tg">UNEP SAFE</span><span class="tag-tn">FRPMS</span><span class="tag-tn">HCVA</span></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-period">January 2020 &ndash; December 2024 &middot; 5 years</div>
+          <div class="tl-role">Forestry Officer</div>
+          <div class="tl-org">Ministry of Energy and Natural Resources &middot; Dagana, Bhutan</div>
+          <ul class="tl-ul">
+            <li>Head, Social Forestry and Extension Section (SFES) — led community forestry program planning, demarcation, and handover to local governance bodies.</li>
+            <li>Head, Forest Resources Planning and Management Division — oversaw integrated forest resource planning across Dagana.</li>
+            <li>Annual Performance Appraisal (APA) Focal — responsible for overall budgeting and annual target-setting for the Division for each financial year.</li>
+            <li>BTFEC Focal — managed project implementation, financial reporting, and stakeholder liaison for BTFEC-funded activities.</li>
+            <li>Conducted field-based biodiversity research: wildlife surveys, fish diversity assessments, entomological monitoring, and HCV area management.</li>
+            <li>Applied ArcGIS and QGIS for spatial analysis, fire risk mapping, and evidence-based conservation planning.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag-tg">Community Forestry</span><span class="tag-to">APA Focal</span><span class="tag-to">BTFEC Focal</span><span class="tag-tn">GIS</span><span class="tag-tn">Research</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PROJECTS & ASSIGNMENTS -->
+    <div class="panel" id="exp-proj">
+      <div class="proj-grid">
+
+        <!-- UPCOMING -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-teal"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-upcoming">&#128197; Upcoming</span><span class="pc-yr">Jul 2026–Jun 2030</span></div>
+            <div class="pc-name">Restoring Fire-Damaged Ecosystems and Enhancing Wildland-Urban Interface Resilience in Bhutan</div>
+            <div class="pc-desc">Four-year project focused on ecological restoration of fire-degraded landscapes and building resilience at the wildland-urban interface. Will involve field assessment, restoration planning, community engagement, and capacity development.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">Donor: Korea Forest Service (KFS) through AFoCO</span></div>
+        </div>
+
+        <!-- IKI -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-green"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tg">IKI Project Focal</span><span class="pc-yr">2021–2025</span></div>
+            <div class="pc-name">IKI Living Landscape Project — Dagana</div>
+            <div class="pc-desc">Funded by the Federal Republic of Germany through WWF Bhutan; implemented across nine districts. As Dagana focal, spearheaded the DFO Management Plan endorsed by the DoFPS Technical Advisory Committee (TAC) — the department's highest decision-making body. Coordinated HCVA identification and management prescriptions for Namchella Catchment Area. Co-led formulation of Conflict to Coexistence (C2C) strategies for Lhamoizingkha and Trashiding Gewogs. Spearheaded the Rapid Biodiversity Assessment and Socio-economic &amp; Climate Vulnerability Assessment for Dagana.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">Donor: Federal Republic of Germany (IKI) / WWF Bhutan</span></div>
+        </div>
+
+        <!-- UNEP SAFE -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-green"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tg">UNEP SAFE</span><span class="pc-yr">2021–2024</span></div>
+            <div class="pc-name">UNEP SAFE — Sustainable Agriculture and Forest Ecosystems</div>
+            <div class="pc-desc">Managed local implementation of UNEP's SAFE project, supporting sustainable land-use planning and conservation-compatible agriculture in buffer zones adjacent to protected areas in Dagana.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">Donor: UNEP &amp; Korea Forest Service</span></div>
+        </div>
+
+        <!-- BTFEC -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-navy"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tn">BTFEC Focal</span><span class="pc-yr">2022–2023</span></div>
+            <div class="pc-name">An Integrated Approach to Improving the Degraded Watersheds in Dagana Dzongkhag</div>
+            <div class="pc-desc">Implemented activities to safeguard communities in sub-degraded catchment areas (Balaychhu–Beudulumchhu–Zharingaychhu). Coordinated supply of irrigation HDPE pipes, executed bioengineering works, community forest plantations, capacity-building training, farmers' exchange programmes, SALT approaches, and integrated water resource management including construction of water trenches.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">Donor: Bhutan Trust Fund for Environmental Conservation (BTFEC)</span></div>
+        </div>
+
+        <!-- APA -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-gold"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-to">APA Focal</span><span class="pc-yr">2020–2024</span></div>
+            <div class="pc-name">Annual Performance Appraisal (APA) — Divisional Forest Office, Dagana</div>
+            <div class="pc-desc">As APA Focal for the Division, responsible for overall budgeting and annual target-setting for each financial year. Coordinated preparation, submission, and review of divisional performance targets across all sections in alignment with national forestry priorities.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">Royal Government of Bhutan &middot; Divisional Forest Office, Dagana</span></div>
+        </div>
+
+        <!-- National Fire -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-green"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tg">National</span><span class="pc-yr">2025–Present</span></div>
+            <div class="pc-name">National Forest Fire Prevention &amp; Management Programme</div>
+            <div class="pc-desc">Spearheading evidence-based fire management policy, inter-agency coordination with MoHCA and Gyalsuung, development of training curricula, and deployment of remote sensing for early warning and fire risk assessment nationwide.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">DoFPS &middot; Ministry of Energy &amp; Natural Resources</span></div>
+        </div>
+
+        <!-- Fish Survey -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-navy"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tn">Research</span><span class="pc-yr">2025</span></div>
+            <div class="pc-name">Freshwater Fish Diversity Survey — Dagana</div>
+            <div class="pc-desc">Designed and led the first comprehensive ichthyofaunal survey for Dagana Division, documenting 47 species using biodiversity monitoring protocols (BMP) and GIS. Published as a Pictorial Field Guide available for download.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">Divisional Forest Office, Dagana</span></div>
+        </div>
+
+        <!-- Fire Curriculum -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-green"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tg">Gyalsuung</span><span class="pc-yr">2022–2023</span></div>
+            <div class="pc-name">Forest Fire Curriculum Development — Gyalsuung National Service</div>
+            <div class="pc-desc">Designed and authored the Forest Fire Fighting Training Manual and Curriculum for Bhutan's Gyalsuung national service programme, building youth capacity in fire prevention, suppression techniques, and ecological awareness.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">DoFPS / Gyalsuung National Service</span></div>
+        </div>
+
+        <!-- C2C -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-gold"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-to">C2C Strategy</span><span class="pc-yr">2025–2026</span></div>
+            <div class="pc-name">Conflicts to Co-existence (C2C) Strategy Development</div>
+            <div class="pc-desc">Lead author for two C2C strategy documents — Lhamoizingkha Gewog and Trashiding Gewog. Evidence-based frameworks to reduce human-wildlife conflict and foster long-term co-existence between communities and wildlife.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">IKI Living Landscape / DoFPS</span></div>
+        </div>
+
+        <!-- Range Officer -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-navy"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tn">Range Officer</span><span class="pc-yr">Jan–Jul 2020</span></div>
+            <div class="pc-name">Range Management — Lhamoizingkha Range Office</div>
+            <div class="pc-desc">Managed all field operations, community engagement, patrol monitoring, and forest protection for Lhamoizingkha Range. Conducted biodiversity field surveys and photography within the range jurisdiction.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">Divisional Forest Office, Dagana</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="padding-bottom:2rem;"></div>
+  </div>
+  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+</div>
+
+
+<!-- ════════════════════ PAGE 3 — RESEARCH ════════════════════ -->
+<div class="page" id="page-research">
+  <div class="page-band">
+    <div class="wrap">
+      <div class="label" style="color:var(--gold-lt);">Field Studies &amp; Scholarship</div>
+      <h1 class="band-title" style="font-size:clamp(2.2rem,3.5vw,3.2rem);">Research &amp;<br/><em>Publications</em></h1>
+      <p class="band-para" style="max-width:620px;">Applied ecological research across Bhutan's forests, wetlands, and wildlife corridors — from ichthyofaunal surveys and entomological assessments to climate vulnerability analyses — informing national biodiversity policy and scientific literature.</p>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="label">Field Studies</div>
+    <h2 class="sec-h">Key Research Projects</h2>
+    <div class="field-grid">
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2025</span><span class="fc-badge">Ichthyology</span></div>
+        <div class="fc-body"><div class="fc-title">A Pictorial Guide to the Freshwater Fishes of Dagana</div><div class="fc-desc">First comprehensive ichthyofauna survey for Dagana Division. Documented 47 freshwater fish species using biodiversity monitoring protocols (BMP) and GIS analysis, establishing the first aquatic biodiversity baseline for the division.</div></div>
+        <div class="fc-foot"><a href="Research papers/A PICTORIAL GUIDE TO  THE FRESHWATER FISHES OF DAGANA    .pdf" download class="dl-btn"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>Download PDF</a></div>
+      </div>
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2025</span><span class="fc-badge">Mammalogy</span></div>
+        <div class="fc-body"><div class="fc-title">Carnivores Recorded in Sakteng Wildlife Sanctuary, Bhutan</div><div class="fc-desc">Camera-trap and field-based documentation of carnivore assemblages in Sakteng Wildlife Sanctuary, providing baseline data for targeted conservation of apex predators and prey species in eastern Bhutan.</div></div>
+        <div class="fc-foot"><a href="Research papers/Carnivores of SWS.pdf" download class="dl-btn"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>Download PDF</a></div>
+      </div>
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2024</span><span class="fc-badge">Entomology</span></div>
+        <div class="fc-body"><div class="fc-title">Diversity &amp; Distribution of Ladybird Beetles (Coccinellidae) in Zhemgang</div><div class="fc-desc">Assessed Coccinellid diversity and habitat distribution across Zhemgang. Published in <em>Bhutan Journal of Natural Resources &amp; Development</em>; contributes to ecosystem health monitoring and IPM strategies.</div></div>
+        <div class="fc-foot"><a href="Research papers/Coccinellid diversity.pdf" download class="dl-btn"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>Download PDF</a></div>
+      </div>
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2023</span><span class="fc-badge">Biodiversity</span></div>
+        <div class="fc-body"><div class="fc-title">Rapid Biodiversity Assessment — Dagana</div><div class="fc-desc">Sampled 29 of 97 NFI plots; recorded 288 floral species (83 families), 40 mammals, 647 birds across 115 species, 144 butterfly species, 15 amphibians, 27 reptiles, and 16 lady beetle species in Dagana Dzongkhag.</div></div>
+        <div class="fc-foot"><span class="int-lbl">Internal Report &middot; DoFPS / BTFEC</span></div>
+      </div>
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2024</span><span class="fc-badge">Climate</span></div>
+        <div class="fc-body"><div class="fc-title">Socio-economic Status &amp; Climate Vulnerability of Dagana</div><div class="fc-desc">Socio-economic surveys mapped climate vulnerability across Dagana Gewogs. Tsendagang and Drujeygang identified as highly vulnerable; findings informed adaptive capacity-building and community resilience interventions.</div></div>
+        <div class="fc-foot"><span class="int-lbl">Report &middot; IKI Living Landscape</span></div>
+      </div>
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2021</span><span class="fc-badge">Entomology</span></div>
+        <div class="fc-body"><div class="fc-title">Six Species of Coccinellidae New to Bhutan (Insecta: Coleoptera)</div><div class="fc-desc">Published in <em>Oriental Insects</em>. Documented six Coccinellidae species previously unrecorded in Bhutan, expanding the country's known entomological diversity and informing future systematic surveys.</div></div>
+        <div class="fc-foot"><a href="Research papers/Six species of Coccinellidae new to Bhutan Insecta Coleoptera.pdf" download class="dl-btn"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>Download PDF</a></div>
+      </div>
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2020</span><span class="fc-badge">Wildlife</span></div>
+        <div class="fc-body"><div class="fc-title">Red Panda Survey — Dagana</div><div class="fc-desc">Field surveys, camera trapping, and habitat assessments documenting red panda presence and habitat preferences in Dagana, feeding into local and national conservation strategies for high conservation value areas.</div></div>
+        <div class="fc-foot"><span class="int-lbl">Survey Report &middot; BTFEC</span></div>
+      </div>
+
+      <div class="fc reveal">
+        <div class="fc-top"><span class="fc-year">2020–2025</span><span class="fc-badge">Monitoring</span></div>
+        <div class="fc-body"><div class="fc-title">Annual Biodiversity Monitoring — Insects</div><div class="fc-desc">Annual field surveys and insect trapping across multiple habitats in Dagana (2020–2025). Longitudinal documentation of insect communities including key indicator species such as ladybird beetles, supporting ecosystem health assessments.</div></div>
+        <div class="fc-foot"><span class="int-lbl">Annual Reports &middot; DoFPS, Dagana</span></div>
+      </div>
+
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="label">Scholarly Output</div>
+    <h2 class="sec-h">Publications</h2>
+
+    <div class="tabs" id="pubs-tabs">
+      <button class="tab on" onclick="switchTab('pubs-tabs','pubs-journals',this)">Journal Articles</button>
+      <button class="tab"    onclick="switchTab('pubs-tabs','pubs-technical',this)">Technical Reports &amp; Manuals</button>
+    </div>
+
+    <div class="panel on" id="pubs-journals">
+      <ul class="j-list">
+        <li class="j-item reveal">
+          <div>
+            <div class="j-badges"><span class="jy">2025</span><span class="jt">Peer-reviewed</span></div>
+            <div class="j-title">Carnivores Recorded in Sakteng Wildlife Sanctuary, Bhutan</div>
+            <div class="j-journal">Journal of Animal Diversity</div>
+            <div class="j-authors">Wangchuk, J. et al. &middot; 2025</div>
+          </div>
+          <a href="Research papers/Carnivores of SWS.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+        </li>
+        <li class="j-item reveal">
+          <div>
+            <div class="j-badges"><span class="jy">2024</span><span class="jt">Peer-reviewed</span></div>
+            <div class="j-title">Diversity and Distribution of Ladybird Beetles (Coleoptera: Coccinellidae) under Different Habitats in Zhemgang, Bhutan</div>
+            <div class="j-journal">Bhutan Journal of Natural Resources &amp; Development</div>
+            <div class="j-authors">Wangchuk, J. et al. &middot; 2024</div>
+          </div>
+          <a href="Research papers/Coccinellid diversity.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+        </li>
+        <li class="j-item reveal">
+          <div>
+            <div class="j-badges"><span class="jy">2021</span><span class="jt">Peer-reviewed</span></div>
+            <div class="j-title">Six Species of Coccinellidae New to Bhutan (Insecta: Coleoptera)</div>
+            <div class="j-journal">Oriental Insects</div>
+            <div class="j-authors">Wangchuk, J. et al. &middot; 2021</div>
+          </div>
+          <a href="Research papers/Six species of Coccinellidae new to Bhutan Insecta Coleoptera.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+        </li>
+        <li class="j-item reveal">
+          <div>
+            <div class="j-badges"><span class="jy">2025</span><span class="jt" style="background:var(--gold-pale);color:var(--gold);">Publication</span></div>
+            <div class="j-title">A Pictorial Guide to the Freshwater Fishes of Dagana</div>
+            <div class="j-journal">Divisional Forest Office, Dagana</div>
+            <div class="j-authors">Wangchuk, J. &middot; 2025</div>
+          </div>
+          <a href="Research papers/A PICTORIAL GUIDE TO  THE FRESHWATER FISHES OF DAGANA    .pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel" id="pubs-technical">
+      <ul class="t-list">
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Divisional Forest Office Management Plan — Dagana</div><div class="t-org">Divisional Forest Office, Dagana &middot; DoFPS</div></div></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflicts to Co-existence (C2C) Strategy — Lhamoizingkha Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflicts to Co-existence (C2C) Strategy — Trashiding Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div></li>
+        <li class="t-item reveal"><span class="t-yr">2024</span><div><div class="t-name">Socio-economic Status and Climate Vulnerability of DFO Dagana</div><div class="t-org">IKI Living Landscape &middot; Climate Vulnerability Assessment</div></div></li>
+        <li class="t-item reveal"><span class="t-yr">2023</span><div><div class="t-name">Rapid Biodiversity Assessment Report for Dagana</div><div class="t-org">BTFEC &middot; Divisional Forest Office, Dagana</div></div></li>
+        <li class="t-item reveal"><span class="t-yr">2023</span><div><div class="t-name">Forest Fire Fighting Training Manual for Gyalsung</div><div class="t-org">DoFPS &middot; Gyalsuung National Service</div></div></li>
+      </ul>
+    </div>
+
+    <div style="padding-bottom:3rem;"></div>
+  </div>
+  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+</div>
+
+
+<!-- ════════════════════ PAGE 4 — SKILLS & AWARDS ════════════════════ -->
+<div class="page" id="page-skills">
+  <div class="sk-band">
+    <div class="wrap">
+      <div class="label" style="color:var(--gold-lt);">Expertise &amp; Recognition</div>
+      <h1 class="sk-band-title">Skills, Certifications &amp; Awards</h1>
+    </div>
+  </div>
+  <div class="wrap sec">
+    <div class="label">Technical &amp; Professional Skills</div>
+    <h2 class="sec-h">Areas of Expertise</h2>
+    <div class="sk3">
+      <div class="sk-box reveal"><div class="sk-hd"><span>&#128506;</span> Geospatial &amp; Remote Sensing</div><div class="tags"><span class="tag">ArcGIS</span><span class="tag">QGIS</span><span class="tag">Remote Sensing</span><span class="tag">Spatial Mapping</span><span class="tag">Fire Risk Assessment</span><span class="tag">Watershed Analysis</span></div></div>
+      <div class="sk-box reveal d1"><div class="sk-hd"><span>&#128202;</span> Data &amp; Research</div><div class="tags"><span class="tag">R (Statistical)</span><span class="tag">Excel</span><span class="tag">Statistical Analysis</span><span class="tag">Ecological Surveys</span><span class="tag">Research Design</span><span class="tag">Technical Writing</span></div></div>
+      <div class="sk-box reveal d2"><div class="sk-hd"><span>&#127807;</span> Field Ecology</div><div class="tags"><span class="tag">Wildlife Surveys</span><span class="tag">Fish Diversity (BMP)</span><span class="tag">Insect Monitoring</span><span class="tag">HCV Management</span><span class="tag">Camera Trapping</span><span class="tag">Botanical Surveys</span></div></div>
+      <div class="sk-box reveal"><div class="sk-hd"><span>&#128293;</span> Forest Management</div><div class="tags"><span class="tag">Fire Prevention</span><span class="tag">Fire Suppression</span><span class="tag">Pest Monitoring</span><span class="tag">Resource Planning</span><span class="tag">Community Forestry</span><span class="tag">METT+</span></div></div>
+      <div class="sk-box reveal d1"><div class="sk-hd"><span>&#128203;</span> Project &amp; Policy</div><div class="tags"><span class="tag">Project Management</span><span class="tag">Budgeting</span><span class="tag">Policy Implementation</span><span class="tag">Inter-agency Coordination</span><span class="tag">Donor Reporting</span></div></div>
+      <div class="sk-box reveal d2"><div class="sk-hd"><span>&#129309;</span> Leadership</div><div class="tags"><span class="tag">Capacity Building</span><span class="tag">Andragogy</span><span class="tag">Gender Mainstreaming</span><span class="tag">Stakeholder Engagement</span><span class="tag">Team Coordination</span></div></div>
+    </div>
+    <div class="hr"></div>
+    <div class="label">Continuous Learning</div>
+    <h2 class="sec-h">Certifications &amp; Training</h2>
+    <div class="cert-grid" style="margin-bottom:4rem;">
+      <div class="cert-c reveal"><div class="cert-ico">&#128752;</div><div><div class="cert-nm">Remote Sensing of Wildfire Management</div><div class="cert-by">UNU-INWEH &middot; Dec 2025</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#127757;</div><div><div class="cert-nm">Introduction to OECMs</div><div class="cert-by">UNDP &amp; WWF-US &middot; Dec 2025</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#129683;</div><div><div class="cert-nm">Reduced Impact Logging (Cable Crane)</div><div class="cert-by">Germany Workshop &middot; Sep 2025</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#129504;</div><div><div class="cert-nm">The Science of Well-Being</div><div class="cert-by">Yale University &middot; Feb 2025</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#128218;</div><div><div class="cert-nm">Andragogy (Training &amp; Teaching Methods)</div><div class="cert-by">Dept. of Forests &amp; Park Services &middot; Apr 2024</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#127777;</div><div><div class="cert-nm">Climate Change Vulnerability Assessment</div><div class="cert-by">IKI Living Landscape &middot; Nov 2023</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#128506;</div><div><div class="cert-nm">Watershed Analysis using GIS</div><div class="cert-by">Udemy &middot; Oct 2021</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#128167;</div><div><div class="cert-nm">Hydrogeology &amp; Springshed Management</div><div class="cert-by">Dept. of Forests &amp; Park Services &middot; Apr 2022</div></div></div>
+    </div>
+    <div class="hr"></div>
+    <div class="label">Recognition</div>
+    <h2 class="sec-h">Awards &amp; Achievements</h2>
+    <div class="aw-grid">
+      <div class="aw-card reveal"><div class="aw-ico">&#127885;</div><div class="aw-t">Outstanding Official — Three Consecutive Years</div><div class="aw-d">Recognised for exemplary performance and contributions to forestry and conservation across three consecutive years (2023–2025).</div></div>
+      <div class="aw-card reveal"><div class="aw-ico">&#128081;</div><div class="aw-t">His Majesty's Certificate</div><div class="aw-d">Recipient of His Majesty's Certificate for topping the 1st year of the B.Sc. Forestry programme at the College of Natural Resources.</div></div>
+      <div class="aw-card reveal"><div class="aw-ico">&#127891;</div><div class="aw-t">Second Position — B.Sc. Forestry</div><div class="aw-d">Recognised for outstanding research on Coccinellid diversity; secured second position overall in the B.Sc. Forestry programme.</div></div>
+      <div class="aw-card reveal"><div class="aw-ico">&#127963;</div><div class="aw-t">Commissioned Officer — RCSC</div><div class="aw-d">Appointed as Commissioned Officer by the Royal Civil Service Commission (RCSC) of Bhutan in 2020.</div></div>
+      <div class="aw-card reveal"><div class="aw-ico">&#127807;</div><div class="aw-t">RGoB Scholarship</div><div class="aw-d">Royal Government of Bhutan Scholarship recipient for B.Sc. Forestry (2015–2019) at College of Natural Resources, Lobeysa.</div></div>
+    </div>
+    <div style="padding-bottom:3rem;"></div>
+  </div>
+  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+</div>
+
+
+<!-- ════════════════════ PAGE 5 — GALLERY ════════════════════ -->
+<div class="page" id="page-gallery">
+  <div class="gallery-band">
+    <div class="wrap">
+      <div class="label" style="color:var(--gold-lt);">Field &amp; Professional Life</div>
+      <h1 class="gallery-band-title">Photo Gallery</h1>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="gallery-grid" id="gallery-grid">
+
+      <div class="gal-item reveal" onclick="openLightbox(0)">
+        <img src="Files/During HCV awareness to staff.JPG" alt="HCV Awareness" onerror="this.style.display='none'"/>
+        <div class="gal-caption">During HCV awareness to staff</div>
+      </div>
+
+      <div class="gal-item reveal d1" onclick="openLightbox(1)">
+        <img src="Files/Red panda captured during Red Panda Survey.JPG" alt="Red Panda Survey" onerror="this.style.display='none'"/>
+        <div class="gal-caption">Red panda captured during Red Panda Survey</div>
+      </div>
+
+      <div class="gal-item reveal d2" onclick="openLightbox(2)">
+        <img src="Files/ICIMOD.JPG" alt="ICIMOD" onerror="this.style.display='none'"/>
+        <div class="gal-caption">ICIMOD</div>
+      </div>
+
+      <div class="gal-item reveal" onclick="openLightbox(3)">
+        <img src="Files/With colleagues at DFO, Dagana during the staff promotion.JPG" alt="Staff Promotion" onerror="this.style.display='none'"/>
+        <div class="gal-caption">With colleagues at DFO, Dagana during staff promotion</div>
+      </div>
+
+      <div class="gal-item reveal d1" onclick="openLightbox(4)">
+        <img src="Files/During consultation on C2C strategy.JPG" alt="C2C Consultation" onerror="this.style.display='none'"/>
+        <div class="gal-caption">During consultation on C2C strategy</div>
+      </div>
+
+      <div class="gal-item reveal d2" onclick="openLightbox(5)">
+        <img src="Files/C2C consultation meeting at Lhamoizingkha.JPG" alt="C2C Meeting" onerror="this.style.display='none'"/>
+        <div class="gal-caption">C2C consultation meeting at Lhamoizingkha</div>
+      </div>
+
+      <div class="gal-item reveal" onclick="openLightbox(6)">
+        <img src="Files/Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg" alt="Fire Suppression" onerror="this.style.display='none'"/>
+        <div class="gal-caption">Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression</div>
+      </div>
+
+      <div class="gal-item reveal d1" onclick="openLightbox(7)">
+        <img src="Files/Field visit at logging site in Germany.jpeg" alt="Germany Field Visit" onerror="this.style.display='none'"/>
+        <div class="gal-caption">Field visit at logging site in Germany</div>
+      </div>
+
+      <div class="gal-item reveal d2" onclick="openLightbox(8)">
+        <img src="Files/Firefighters at site, Ramtokto top.jpeg" alt="Firefighters at Ramtokto" onerror="this.style.display='none'"/>
+        <div class="gal-caption">Firefighters at site, Ramtokto top</div>
+      </div>
+
+      <div class="gal-item reveal" onclick="openLightbox(9)">
+        <img src="Files/SMART training at Dagana Range.jpeg" alt="SMART Training" onerror="this.style.display='none'"/>
+        <div class="gal-caption">SMART training at Dagana Range</div>
+      </div>
+
+    </div>
+  </div>
+  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  <button class="lb-prev" onclick="lbNav(-1)">&#8592;</button>
+  <img class="lb-img" id="lb-img" src="" alt=""/>
+  <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
+
+
+<!-- ════════════════════ PAGE 6 — CONTACT ════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="ct-hero">
+    <div class="wrap">
+      <div class="label" style="color:var(--gold-lt);">Get in Touch</div>
+      <h1 class="ct-title">Let's<br/><em>Connect</em></h1>
+      <p class="ct-sub">Interested in research collaboration, conservation initiatives, or forestry partnerships? I'd be glad to hear from you.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ct-body">
+      <div class="ct-links">
+        <a href="mailto:jygcen23@gmail.com" class="cl">
+          <div class="cl-ico">&#9993;</div>
+          <div><div class="cl-lbl">Personal Email</div><div class="cl-val">jygcen23@gmail.com</div></div>
+        </a>
+        <a href="mailto:jigmewangchuk@moenr.gov.bt" class="cl">
+          <div class="cl-ico">&#128231;</div>
+          <div><div class="cl-lbl">Official Email</div><div class="cl-val">jigmewangchuk@moenr.gov.bt</div></div>
+        </a>
+        <a href="tel:+97577385897" class="cl">
+          <div class="cl-ico">&#128222;</div>
+          <div><div class="cl-lbl">Phone</div><div class="cl-val">+975 77385897</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/jigme-wangchuk-4075b61ab" target="_blank" rel="noopener" class="cl">
+          <div class="cl-ico">&#128188;</div>
+          <div><div class="cl-lbl">LinkedIn</div><div class="cl-val">linkedin.com/in/jigme-wangchuk &#8599;</div></div>
+        </a>
+        <a href="https://www.researchgate.net/profile/Jigme-Wangchuk-10" target="_blank" rel="noopener" class="cl">
+          <div class="cl-ico">&#128300;</div>
+          <div><div class="cl-lbl">ResearchGate</div><div class="cl-val">researchgate.net/Jigme-Wangchuk-10 &#8599;</div></div>
+        </a>
+      </div>
+      <div class="ct-form">
+        <h3>Send a Message</h3>
+        <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name"/></div>
+        <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
+        <div class="fg"><label>Subject</label><input type="text" placeholder="Research collaboration, etc."/></div>
+        <div class="fg"><label>Message</label><textarea placeholder="Your message here…"></textarea></div>
+        <button class="form-send" onclick="doSend()">Send Message &#8594;</button>
+        <p class="form-note">Or email directly at jygcen23@gmail.com</p>
+      </div>
+    </div>
+  </div>
+  <footer style="background:#03080A;">&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script>
+var PAGES = ['home','about','research','skills','gallery','contact'];
+
+function goTo(id) {
+  for (var i = 0; i < PAGES.length; i++) {
+    document.getElementById('page-' + PAGES[i]).classList.remove('active');
+    var b = document.getElementById('nb-' + PAGES[i]);
+    if (b) b.classList.remove('on');
+  }
+  document.getElementById('page-' + id).classList.add('active');
+  var btn = document.getElementById('nb-' + id);
+  if (btn) btn.classList.add('on');
+  window.scrollTo(0, 0);
+  setTimeout(doReveals, 100);
+}
+
+function doReveals() {
+  var els = document.querySelectorAll('.page.active .reveal');
+  var io = new IntersectionObserver(function(entries, obs) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function(el) { if (!el.classList.contains('vis')) io.observe(el); });
+}
+
+function switchTab(tabsId, panelId, clickedBtn) {
+  var tabsEl = document.getElementById(tabsId);
+  if (!tabsEl) return;
+  tabsEl.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('on'); });
+  clickedBtn.classList.add('on');
+  var panel = document.getElementById(panelId);
+  if (!panel) return;
+  panel.parentNode.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('on'); });
+  panel.classList.add('on');
+  setTimeout(doReveals, 80);
+}
+
+document.getElementById('ham').addEventListener('click', function() {
+  document.getElementById('mob').classList.add('open');
+});
+function closeMob() { document.getElementById('mob').classList.remove('open'); }
+
+// Lightbox
+var lbImages = [
+  { src: 'Files/During HCV awareness to staff.JPG', cap: 'During HCV awareness to staff' },
+  { src: 'Files/Red panda captured during Red Panda Survey.JPG', cap: 'Red panda captured during Red Panda Survey' },
+  { src: 'Files/ICIMOD.JPG', cap: 'ICIMOD' },
+  { src: 'Files/With colleagues at DFO, Dagana during the staff promotion.JPG', cap: 'With colleagues at DFO, Dagana during staff promotion' },
+  { src: 'Files/During consultation on C2C strategy.JPG', cap: 'During consultation on C2C strategy' },
+  { src: 'Files/C2C consultation meeting at Lhamoizingkha.JPG', cap: 'C2C consultation meeting at Lhamoizingkha' },
+  { src: 'Files/Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg', cap: 'Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression' },
+  { src: 'Files/Field visit at logging site in Germany.jpeg', cap: 'Field visit at logging site in Germany' },
+  { src: 'Files/Firefighters at site, Ramtokto top.jpeg', cap: 'Firefighters at site, Ramtokto top' },
+  { src: 'Files/SMART training at Dagana Range.jpeg', cap: 'SMART training at Dagana Range' }
+];
+var lbCurrent = 0;
+
+function openLightbox(idx) {
+  lbCurrent = idx;
+  document.getElementById('lb-img').src = lbImages[idx].src;
+  document.getElementById('lb-caption').textContent = lbImages[idx].cap;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+function closeLightboxOutside(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
+function lbNav(dir) {
+  lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
+  document.getElementById('lb-img').src = lbImages[lbCurrent].src;
+  document.getElementById('lb-caption').textContent = lbImages[lbCurrent].cap;
+}
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'Escape') closeLightbox();
+});
+
+function doSend() {
+  var fields = document.querySelectorAll('.ct-form input, .ct-form textarea');
+  var ok = true;
+  fields.forEach(function(f) { if (!f.value.trim()) ok = false; });
+  if (!ok) { alert('Please fill in all fields.'); return; }
+  alert('Thank you! Jigme will get back to you shortly.');
+  fields.forEach(function(f) { f.value = ''; });
+}
+
+window.addEventListener('DOMContentLoaded', function() { setTimeout(doReveals, 200); });
+</script>
+</body>
+</html>
