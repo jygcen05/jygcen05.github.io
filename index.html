@@ -741,51 +741,134 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
   <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
 </div>
 
+import React, { useState } from "react";
 
-<!-- ════════════════════ PAGE 5 — GALLERY ════════════════════ -->
-const galleryImages = [
-  {
-    src: "Files/During HCV awareness to staff.JPG",
-    caption: "During HCV awareness to staff"
+export default function Gallery() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const galleryImages = [
+    {
+      src: "Files/During HCV awareness to staff.JPG",
+      caption: "During HCV awareness to staff"
+    },
+    {
+      src: "Files/Red panda captured during Red Panda Survey.JPG",
+      caption: "Red panda captured during Red Panda Survey"
+    },
+    {
+      src: "Files/ICIMOD.JPG",
+      caption: "ICIMOD"
+    },
+    {
+      src: "Files/With colleagues at DFO, Dagana during the staff promotion.JPG",
+      caption: "With colleagues at DFO, Dagana during staff promotion"
+    },
+    {
+      src: "Files/During consultation on C2C strategy.JPG",
+      caption: "During consultation on C2C strategy"
+    },
+    {
+      src: "Files/C2C consultation meeting at Lhamoizingkha.JPG",
+      caption: "C2C consultation meeting at Lhamoizingkha"
+    },
+    {
+      src: "Files/Climbing up to Ramtokto top carrying Fire Terminator solution for fire suppression.jpeg",
+      caption: "Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression"
+    },
+    {
+      src: "Files/Field visit at logging site in Germany.jpeg",
+      caption: "Field visit at logging site in Germany"
+    },
+    {
+      src: "Files/Firefighters at site, Ramtokto top.jpeg",
+      caption: "Firefighters at site, Ramtokto top"
+    },
+    {
+      src: "Files/SMART training at Dagana Range.jpeg",
+      caption: "SMART training at Dagana Range"
+    }
+  ];
+
+  return (
+    <div>
+      {/* Gallery */}
+      <div style={styles.gallery}>
+        {galleryImages.map((img, index) => (
+          <div key={index} style={styles.item}>
+            <img
+              src={img.src}
+              alt={img.caption}
+              style={styles.image}
+              onClick={() => setSelectedImage(img)}
+            />
+            <p>{img.caption}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div style={styles.lightbox} onClick={() => setSelectedImage(null)}>
+          <span style={styles.close}>&times;</span>
+          <img
+            src={selectedImage.src}
+            alt={selectedImage.caption}
+            style={styles.lightboxImg}
+          />
+          <p style={styles.caption}>{selectedImage.caption}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* Styles */
+const styles = {
+  gallery: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+    gap: "10px",
+    padding: "20px"
   },
-  {
-    src: "Files/Red panda captured during Red Panda Survey.JPG",
-    caption: "Red panda captured during Red Panda Survey"
+  item: {
+    textAlign: "center"
   },
-  {
-    src: "Files/ICIMOD.JPG",
-    caption: "ICIMOD"
+  image: {
+    width: "100%",
+    borderRadius: "8px",
+    cursor: "pointer"
   },
-  {
-    src: "Files/With colleagues at DFO, Dagana during the staff promotion.JPG",
-    caption: "With colleagues at DFO, Dagana during staff promotion"
+  lightbox: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "rgba(0,0,0,0.9)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000
   },
-  {
-    src: "Files/During consultation on C2C strategy.JPG",
-    caption: "During consultation on C2C strategy"
+  lightboxImg: {
+    maxWidth: "90%",
+    maxHeight: "80%",
+    borderRadius: "10px"
   },
-  {
-    src: "Files/C2C consultation meeting at Lhamoizingkha.JPG",
-    caption: "C2C consultation meeting at Lhamoizingkha"
+  caption: {
+    color: "white",
+    marginTop: "10px"
   },
-  {
-    src: "Files/Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg",
-    caption: "Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression"
-  },
-  {
-    src: "Files/Field visit at logging site in Germany.jpeg",
-    caption: "Field visit at logging site in Germany"
-  },
-  {
-    src: "Files/Firefighters at site, Ramtokto top.jpeg",
-    caption: "Firefighters at site, Ramtokto top"
-  },
-  {
-    src: "Files/SMART training at Dagana Range.jpeg",
-    caption: "SMART training at Dagana Range"
+  close: {
+    position: "absolute",
+    top: "20px",
+    right: "30px",
+    fontSize: "40px",
+    color: "white",
+    cursor: "pointer"
   }
-]
-
+};
 <!-- ════════════════════ PAGE 6 — CONTACT ════════════════════ -->
 <div class="page" id="page-contact">
   <div class="ct-hero">
