@@ -743,80 +743,48 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 
 
 <!-- ════════════════════ PAGE 5 — GALLERY ════════════════════ -->
-<div class="page" id="page-gallery">
-  <div class="gallery-band">
-    <div class="wrap">
-      <div class="label" style="color:var(--gold-lt);">Field &amp; Professional Life</div>
-      <h1 class="gallery-band-title">Photo Gallery</h1>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="gallery-grid" id="gallery-grid">
-
-      <div class="gal-item reveal" onclick="openLightbox(0)">
-        <img src="During HCV awareness to staff.JPG" alt="HCV Awareness" onerror="this.style.display='none'"/>
-        <div class="gal-caption">During HCV awareness to staff</div>
-      </div>
-
-      <div class="gal-item reveal d1" onclick="openLightbox(1)">
-        <img src="Red panda captured during Red Panda Survey.JPG" alt="Red Panda Survey" onerror="this.style.display='none'"/>
-        <div class="gal-caption">Red panda captured during Red Panda Survey</div>
-      </div>
-
-      <div class="gal-item reveal d2" onclick="openLightbox(2)">
-        <img src="ICIMOD.JPG" alt="ICIMOD" onerror="this.style.display='none'"/>
-        <div class="gal-caption">ICIMOD</div>
-      </div>
-
-      <div class="gal-item reveal" onclick="openLightbox(3)">
-        <img src="With colleagues at DFO, Dagana during the staff promotion.JPG" alt="Staff Promotion" onerror="this.style.display='none'"/>
-        <div class="gal-caption">With colleagues at DFO, Dagana during staff promotion</div>
-      </div>
-
-      <div class="gal-item reveal d1" onclick="openLightbox(4)">
-        <img src="During consultation on C2C strategy.JPG" alt="C2C Consultation" onerror="this.style.display='none'"/>
-        <div class="gal-caption">During consultation on C2C strategy</div>
-      </div>
-
-      <div class="gal-item reveal d2" onclick="openLightbox(5)">
-        <img src="C2C consultation meeting at Lhamoizingkha.JPG" alt="C2C Meeting" onerror="this.style.display='none'"/>
-        <div class="gal-caption">C2C consultation meeting at Lhamoizingkha</div>
-      </div>
-
-      <div class="gal-item reveal" onclick="openLightbox(6)">
-        <img src="Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg" alt="Fire Suppression" onerror="this.style.display='none'"/>
-        <div class="gal-caption">Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression</div>
-      </div>
-
-      <div class="gal-item reveal d1" onclick="openLightbox(7)">
-        <img src="Field visit at logging site in Germany.jpeg" alt="Germany Field Visit" onerror="this.style.display='none'"/>
-        <div class="gal-caption">Field visit at logging site in Germany</div>
-      </div>
-
-      <div class="gal-item reveal d2" onclick="openLightbox(8)">
-        <img src="Firefighters at site, Ramtokto top.jpeg" alt="Firefighters at Ramtokto" onerror="this.style.display='none'"/>
-        <div class="gal-caption">Firefighters at site, Ramtokto top</div>
-      </div>
-
-      <div class="gal-item reveal" onclick="openLightbox(9)">
-        <img src="SMART training at Dagana Range.jpeg" alt="SMART Training" onerror="this.style.display='none'"/>
-        <div class="gal-caption">SMART training at Dagana Range</div>
-      </div>
-
-    </div>
-  </div>
-  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
-</div>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
-  <button class="lb-prev" onclick="lbNav(-1)">&#8592;</button>
-  <img class="lb-img" id="lb-img" src="" alt=""/>
-  <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
-  <div class="lb-caption" id="lb-caption"></div>
-</div>
-
+const galleryImages = [
+  {
+    src: "Files/During HCV awareness to staff.JPG",
+    caption: "During HCV awareness to staff"
+  },
+  {
+    src: "Files/Red panda captured during Red Panda Survey.JPG",
+    caption: "Red panda captured during Red Panda Survey"
+  },
+  {
+    src: "Files/ICIMOD.JPG",
+    caption: "ICIMOD"
+  },
+  {
+    src: "Files/With colleagues at DFO, Dagana during the staff promotion.JPG",
+    caption: "With colleagues at DFO, Dagana during staff promotion"
+  },
+  {
+    src: "Files/During consultation on C2C strategy.JPG",
+    caption: "During consultation on C2C strategy"
+  },
+  {
+    src: "Files/C2C consultation meeting at Lhamoizingkha.JPG",
+    caption: "C2C consultation meeting at Lhamoizingkha"
+  },
+  {
+    src: "Files/Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg",
+    caption: "Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression"
+  },
+  {
+    src: "Files/Field visit at logging site in Germany.jpeg",
+    caption: "Field visit at logging site in Germany"
+  },
+  {
+    src: "Files/Firefighters at site, Ramtokto top.jpeg",
+    caption: "Firefighters at site, Ramtokto top"
+  },
+  {
+    src: "Files/SMART training at Dagana Range.jpeg",
+    caption: "SMART training at Dagana Range"
+  }
+]
 
 <!-- ════════════════════ PAGE 6 — CONTACT ════════════════════ -->
 <div class="page" id="page-contact">
