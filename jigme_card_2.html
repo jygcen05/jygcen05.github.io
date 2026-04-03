@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Card - Jigme Wangchuk</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .card {
+    width: 700px;
+    height: 270px;
+    background: #ffffff;
+    display: flex;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .left-panel {
+    width: 220px;
+    background: #1a7a7a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 18px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .logo-area {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+  .logo-text {
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .photo-wrapper {
+    width: 130px;
+    height: 160px;
+    border: 3px solid white;
+    overflow: hidden;
+    background: #ccc;
+    position: relative;
+    bottom: -5px;
+  }
+  .photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 24px 16px 20px;
+    position: relative;
+    background: white;
+  }
+  .dot-pattern {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    display: grid;
+    grid-template-columns: repeat(5, 6px);
+    gap: 4px;
+  }
+  .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c8e6e6;
+  }
+  .name-block { margin-top: 4px; margin-bottom: 10px; }
+  .name-first {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .name-last {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a7a7a;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  .title-bar {
+    background: #1a7a7a;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 5px 12px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 12px;
+    align-self: flex-start;
+    min-width: 250px;
+    position: relative;
+  }
+  .title-bar::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 0; bottom: 0;
+    width: 6px;
+    background: #0d5050;
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+  }
+  .dept-line {
+    font-size: 9.5px;
+    color: #555;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    font-style: italic;
+    max-width: 340px;
+  }
+  .contact-list { display: flex; flex-direction: column; gap: 5px; }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11px;
+    color: #333;
+    line-height: 1.4;
+  }
+  .contact-icon { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; }
+  .contact-icon svg { width: 14px; height: 14px; fill: #1a7a7a; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="#1a7a7a"/>
+          <path d="M24 38 C24 38 12 28 12 20 C12 13.4 17.4 8 24 8 C30.6 8 36 13.4 36 20 C36 28 24 38 24 38Z" fill="white"/>
+          <line x1="24" y1="24" x2="24" y2="38" stroke="#1a7a7a" stroke-width="2"/>
+          <path d="M18 22 C18 22 21 18 24 20" stroke="#1a7a7a" stroke-width="1.5" fill="none"/>
+          <path d="M30 18 C30 18 27 22 24 20" stroke="#1a7a7a" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="logo-text">DEPARTMENT OF<br>FORESTS &amp; PARK SERVICES</div>
+    </div>
+
+    <div class="photo-wrapper">
+      <img src="/Users/user/Desktop/My Porffolio/Files/Profile image.jpg" alt="Jigme Wangchuk" />
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+
+    <div class="dot-pattern">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+
+    <div class="name-block">
+      <div class="name-first">JIGME</div>
+      <div class="name-last">WANGCHUK</div>
+    </div>
+
+    <div class="title-bar">SENIOR FORESTRY OFFICER</div>
+
+    <div class="dept-line">Forest Fire &amp; Pest Management Programme<br>Forest Resources Planning and Management Division</div>
+
+    <div class="contact-list">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/>
+          </svg>
+        </div>
+        <span>+975 77385897</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <span>jigmewangchuk@moenr.gov.bt</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/>
+          </svg>
+        </div>
+        <span>11001, Thimphu, Bhutan</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
