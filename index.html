@@ -4,288 +4,26 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Jigme Wangchuk — Forest Fire Analyst, Bhutan</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<style>
-:root{
-  --navy:#1A2B3C; --navy-lt:#2E4560;
-  --charcoal:#1A1A1A; --slate:#3D4F5E; --muted:#8A9BAA;
-  --white:#FFFFFF; --off:#FAFAF8; --cream:#F5F2EC; --beige:#EDE8DF;
-  --border:#E0DBD3; --border-lt:#EDEAE4;
-  --gold:#B8862A; --gold-lt:#D4A647; --gold-pale:#F2E8D4;
-  --green:#2A5C45; --green-mid:#3A7059; --green-pale:#EAF2EE;
-  --ease:cubic-bezier(.25,.46,.45,.94); --r:8px;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Montserrat',sans-serif;background:var(--off);color:var(--charcoal);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-img{display:block;max-width:100%;}
-a{text-decoration:none;color:inherit;}
-button{font-family:inherit;cursor:pointer;}
-
-.page{display:none;}
-.page.active{display:block;}
-
-/* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:900;height:68px;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 3.5rem;box-shadow:0 2px 20px rgba(0,0,0,.22);}
-.nav-brand{display:flex;align-items:center;gap:.75rem;cursor:pointer;}
-.nav-mark{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-lt));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);flex-shrink:0;}
-.nav-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.2;}
-.nav-name span{display:block;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);}
-.nav-links{display:flex;gap:.1rem;list-style:none;align-items:center;}
-.nav-links button{padding:.5rem .8rem;background:none;border:none;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border-radius:4px;transition:color .2s,background .2s;}
-.nav-links button:hover{color:var(--white);background:rgba(255,255,255,.07);}
-.nav-links button.on{color:var(--gold-lt);}
-.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
-.ham span{display:block;width:22px;height:2px;background:rgba(255,255,255,.65);border-radius:2px;}
-
-/* LAYOUT */
-.wrap{max-width:1160px;margin:0 auto;padding:0 3.5rem;}
-.sec{padding:5rem 0;}
-.label{display:inline-flex;align-items:center;gap:.6rem;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
-.label::before{content:'';display:block;width:26px;height:2px;background:var(--gold);}
-.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:2.2rem;}
-.sec-h em{color:var(--gold);font-style:italic;}
-.hr{width:100%;height:1px;background:var(--border);margin:3rem 0;}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.8rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;transition:all .22s var(--ease);}
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:var(--navy);}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,134,42,.4);}
-.btn-ghost{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);}
-.btn-ghost:hover{background:rgba(255,255,255,.12);color:var(--white);border-color:rgba(255,255,255,.4);}
-.tag-tg{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:var(--green-pale);color:var(--green);}
-.tag-tn{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:rgba(26,43,60,.08);color:var(--navy);}
-.tag-to{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:var(--gold-pale);color:var(--gold);}
-
-/* TABS */
-.tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:2.5rem;}
-.tab{padding:.75rem 1.5rem;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
-.tab.on{color:var(--navy);border-bottom-color:var(--navy);}
-.tab:hover:not(.on){color:var(--slate);}
-.panel{display:none;}
-.panel.on{display:block;}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s var(--ease),transform .55s var(--ease);}
-.reveal.vis{opacity:1;transform:translateY(0);}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
-
-/* ════ PAGE 1 — HOME ════ */
-#page-home{background:var(--navy);}
-.hero{min-height:100vh;padding-top:68px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 460px;grid-template-rows:1fr auto;}
-.hero::before{content:'';position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 70% at 20% 50%,rgba(42,92,69,.22) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 90% 10%,rgba(184,134,42,.1) 0%,transparent 60%);}
-.hero::after{content:'';position:absolute;inset:0;z-index:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.025) 1px,transparent 0);background-size:44px 44px;}
-.hero-l{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5rem;}
-.hero-kicker{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:1.8rem;animation:fadeUp .7s var(--ease) both;}
-.hero-kicker::before{content:'';width:24px;height:2px;background:var(--gold);display:block;}
-.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:900;color:var(--white);line-height:1.03;margin-bottom:.25rem;animation:fadeUp .7s var(--ease) .1s both;}
-.hero-h1 i{color:#B0CEBC;font-style:italic;font-weight:400;}
-.hero-role{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);border-left:3px solid var(--gold);padding-left:.9rem;margin:1.4rem 0 1.8rem;animation:fadeUp .7s var(--ease) .2s both;}
-.hero-bio{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.3vw,1.18rem);line-height:1.85;color:rgba(255,255,255,.55);max-width:500px;margin-bottom:2.8rem;animation:fadeUp .7s var(--ease) .3s both;}
-.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;animation:fadeUp .7s var(--ease) .4s both;}
-.hero-r{position:relative;z-index:2;overflow:hidden;}
-.hero-r img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-.hero-r::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,var(--navy) 0%,rgba(26,43,60,.15) 40%,transparent 60%),linear-gradient(to top,var(--navy) 0%,transparent 35%);}
-.hero-r-ph{width:100%;height:100%;min-height:500px;background:linear-gradient(160deg,#1E3650,#0F1E2D);display:flex;align-items:center;justify-content:center;font-size:5rem;color:rgba(255,255,255,.08);}
-.hero-stats{grid-column:1/-1;position:relative;z-index:3;background:rgba(10,18,26,.88);backdrop-filter:blur(12px);border-top:1px solid rgba(184,134,42,.18);display:grid;grid-template-columns:repeat(3,1fr);animation:fadeUp .7s var(--ease) .6s both;}
-.stat-c{padding:1.4rem 2rem;border-right:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:1rem;}
-.stat-c:last-child{border-right:none;}
-.stat-ico{font-size:1.4rem;opacity:.65;}
-.stat-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--gold-lt);line-height:1;display:block;}
-.stat-lbl{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem;display:block;}
-
-/* PAGE BAND */
-.page-band{background:var(--navy);padding:5rem 0 4rem;}
-.band-grid{display:grid;grid-template-columns:1fr 280px;gap:4rem;align-items:center;}
-.band-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1rem;}
-.band-title em{color:var(--gold-lt);font-style:italic;}
-.band-para{font-size:.95rem;line-height:1.9;color:rgba(255,255,255,.5);font-weight:300;max-width:540px;}
-.photo-frame{border-radius:var(--r);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);aspect-ratio:3/4;}
-.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-.photo-ph{width:100%;height:100%;min-height:240px;background:linear-gradient(160deg,#1E3650,#0F1E2D);display:flex;align-items:center;justify-content:center;font-size:4rem;}
-
-/* ABOUT */
-#page-about{background:var(--off);}
-.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:3.5rem;}
-.pc{background:var(--white);padding:1.3rem 1.5rem;}
-.pc-k{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
-.pc-v{font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.4;}
-
-/* TIMELINE */
-.tl{position:relative;padding-left:2.5rem;}
-.tl::before{content:'';position:absolute;left:8px;top:10px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--navy),var(--border));}
-.tl-item{position:relative;margin-bottom:3rem;}
-.tl-dot{position:absolute;left:-2.3rem;top:4px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--navy);box-shadow:0 0 0 3px rgba(26,43,60,.1);}
-.tl-dot.g{border-color:var(--gold);}
-.tl-period{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
-.tl-role{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
-.tl-org{font-size:.85rem;font-weight:600;color:var(--green);margin-bottom:.9rem;}
-.tl-ul{list-style:none;}
-.tl-ul li{font-size:.88rem;color:var(--slate);line-height:1.8;padding:.2rem 0 .2rem 1.3rem;position:relative;}
-.tl-ul li::before{content:'›';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:1.1rem;}
-.tl-tags{margin-top:.75rem;display:flex;flex-wrap:wrap;gap:.4rem;}
-
-/* PROJECT CARDS */
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
-.pc-card{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s;}
-.pc-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.09);}
-.pc-band{height:4px;}
-.b-navy{background:linear-gradient(90deg,var(--navy),var(--navy-lt));}
-.b-green{background:linear-gradient(90deg,var(--green),var(--green-mid));}
-.b-gold{background:linear-gradient(90deg,var(--gold),var(--gold-lt));}
-.b-teal{background:linear-gradient(90deg,#1a6b7a,#2a9aad);}
-.pc-body{padding:1.4rem 1.6rem;flex:1;}
-.pc-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem;align-items:center;}
-.pc-yr{font-size:.6rem;font-weight:600;color:var(--muted);margin-left:auto;}
-.pc-upcoming{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:#e8f4f8;color:#1a6b7a;border:1px solid #9fd0dd;}
-.pc-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:.6rem;}
-.pc-desc{font-size:.83rem;color:var(--slate);line-height:1.75;}
-.pc-foot{padding:.75rem 1.6rem;border-top:1px solid var(--border-lt);}
-.pc-donor{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
-
-/* RESEARCH */
-#page-research{background:var(--off);}
-.field-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.6rem;margin-bottom:5rem;}
-.fc{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s;}
-.fc:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.1);}
-.fc-top{background:var(--navy);padding:1.3rem 1.6rem;display:flex;justify-content:space-between;align-items:flex-start;}
-.fc-year{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:rgba(255,255,255,.1);line-height:1;user-select:none;}
-.fc-badge{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border-radius:20px;background:rgba(184,134,42,.2);border:1px solid rgba(184,134,42,.4);color:var(--gold-lt);}
-.fc-body{padding:1.3rem 1.6rem;flex:1;}
-.fc-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.65rem;line-height:1.35;}
-.fc-desc{font-size:.83rem;color:var(--slate);line-height:1.78;}
-.fc-foot{padding:.85rem 1.6rem;border-top:1px solid var(--border-lt);}
-.dl-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.48rem 1.05rem;background:var(--navy);color:rgba(255,255,255,.75);border-radius:4px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;text-decoration:none;}
-.dl-btn:hover{background:var(--navy-lt);color:var(--white);transform:translateY(-1px);}
-.dl-btn svg{width:12px;height:12px;fill:currentColor;flex-shrink:0;}
-.int-lbl{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
-
-.j-list{list-style:none;}
-.j-item{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;padding:1.5rem 0;border-bottom:1px solid var(--border-lt);}
-.j-item:last-child{border-bottom:none;}
-.j-badges{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem;flex-wrap:wrap;}
-.jy{font-size:.62rem;font-weight:700;background:var(--navy);color:var(--gold-lt);padding:.2rem .6rem;border-radius:3px;}
-.jt{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:var(--green-pale);color:var(--green);}
-.j-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.45;margin-bottom:.3rem;}
-.j-journal{font-family:'Playfair Display',serif;font-style:italic;font-size:.88rem;color:var(--gold);}
-.j-authors{font-size:.72rem;color:var(--muted);font-weight:500;margin-top:.15rem;}
-
-.t-list{list-style:none;}
-.t-item{display:grid;grid-template-columns:70px 1fr;gap:1.2rem;align-items:center;padding:1rem 1.2rem;border-radius:var(--r);transition:background .2s;}
-.t-item:hover{background:var(--beige);}
-.t-yr{font-size:.68rem;font-weight:700;color:var(--gold);text-align:center;}
-.t-name{font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.45;margin-bottom:.12rem;}
-.t-org{font-size:.72rem;color:var(--muted);font-weight:500;}
-
-/* SKILLS */
-#page-skills{background:var(--off);}
-.sk-band{background:linear-gradient(160deg,var(--navy) 0%,#1E3650 100%);padding:4.5rem 0 3.5rem;}
-.sk-band-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;color:var(--white);}
-.sk3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem;}
-.sk-box{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);padding:1.6rem;transition:box-shadow .2s;}
-.sk-box:hover{box-shadow:0 6px 20px rgba(0,0,0,.07);}
-.sk-hd{display:flex;align-items:center;gap:.7rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem;padding-bottom:.8rem;border-bottom:2px solid var(--navy);}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-.tag{font-size:.72rem;font-weight:500;padding:.28rem .72rem;border-radius:20px;background:var(--beige);border:1px solid var(--border);color:var(--slate);transition:all .18s;}
-.tag:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:4rem;}
-.cert-c{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);padding:1.15rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:box-shadow .2s;}
-.cert-c:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
-.cert-ico{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--navy),var(--navy-lt));display:flex;align-items:center;justify-content:center;font-size:1rem;}
-.cert-nm{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:.18rem;}
-.cert-by{font-size:.68rem;font-weight:500;color:var(--muted);}
-.aw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.3rem;}
-.aw-card{background:var(--white);border:1px solid var(--border-lt);border-radius:var(--r);padding:1.8rem;position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s;}
-.aw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));}
-.aw-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.08);}
-.aw-ico{font-size:1.9rem;margin-bottom:.8rem;}
-.aw-t{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.45rem;line-height:1.35;}
-.aw-d{font-size:.83rem;color:var(--slate);line-height:1.7;}
-
-/* GALLERY */
-#page-gallery{background:var(--off);}
-.gallery-band{background:var(--navy);padding:4.5rem 0 3.5rem;}
-.gallery-band-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;color:var(--white);}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;padding:4rem 0;}
-.gal-item{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;background:var(--navy);}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease),filter .4s;}
-.gal-item:hover img{transform:scale(1.06);filter:brightness(.75);}
-.gal-caption{position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem;background:linear-gradient(to top,rgba(10,20,30,.85),transparent);color:var(--white);font-size:.75rem;font-weight:500;letter-spacing:.04em;line-height:1.4;transform:translateY(100%);transition:transform .3s var(--ease);}
-.gal-item:hover .gal-caption{transform:translateY(0);}
-
-/* Lightbox */
-.lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;}
-.lightbox.open{display:flex;}
-.lb-img{max-width:90vw;max-height:88vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6);object-fit:contain;}
-.lb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,.6);font-size:2rem;cursor:pointer;transition:color .2s;}
-.lb-close:hover{color:var(--white);}
-.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;cursor:pointer;transition:background .2s;}
-.lb-prev{left:1.5rem;}
-.lb-next{right:1.5rem;}
-.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.2);}
-.lb-caption{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.65);font-size:.8rem;letter-spacing:.06em;text-align:center;max-width:600px;}
-
-/* CONTACT */
-#page-contact{background:var(--navy);}
-.ct-hero{background:linear-gradient(160deg,#0F1E2D,var(--navy-lt));padding:5.5rem 0 4.5rem;}
-.ct-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:.9rem;}
-.ct-title em{color:var(--gold-lt);font-style:italic;}
-.ct-sub{font-family:'Playfair Display',serif;font-size:1.05rem;color:rgba(255,255,255,.42);max-width:520px;line-height:1.8;}
-.ct-body{display:grid;grid-template-columns:1fr 420px;gap:4rem;padding:4rem 0;}
-.ct-links{display:flex;flex-direction:column;gap:.85rem;}
-.cl{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);color:rgba(255,255,255,.65);transition:all .22s;}
-.cl:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:var(--white);transform:translateX(4px);}
-.cl-ico{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:rgba(184,134,42,.15);border:1px solid rgba(184,134,42,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;}
-.cl-lbl{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:.18rem;}
-.cl-val{font-size:.85rem;font-weight:500;}
-.ct-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:2.4rem;}
-.ct-form h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1.8rem;}
-.fg{margin-bottom:1.2rem;}
-.fg label{display:block;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.42rem;}
-.fg input,.fg textarea{width:100%;padding:.76rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s;resize:none;}
-.fg input:focus,.fg textarea:focus{border-color:rgba(184,134,42,.6);}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2);}
-.fg textarea{height:100px;}
-.form-send{width:100%;padding:.88rem;background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:var(--navy);border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .22s;}
-.form-send:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(184,134,42,.4);}
-.form-note{text-align:center;margin-top:.75rem;font-size:.62rem;color:rgba(255,255,255,.25);}
-
-footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);}
-
-/* MOBILE MENU */
-.mob{position:fixed;inset:0;z-index:950;background:var(--navy);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.8rem;transform:translateX(-100%);transition:transform .35s var(--ease);}
-.mob.open{transform:translateX(0);}
-.mob button,.mob a{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:600;color:rgba(255,255,255,.65);background:none;border:none;transition:color .2s;}
-.mob button:hover,.mob a:hover{color:var(--gold-lt);}
-.mob-x{position:absolute;top:1.5rem;right:2rem;font-size:1.5rem;background:none;border:none;color:rgba(255,255,255,.45);}
-
-@media(max-width:1024px){
-  .hero{grid-template-columns:1fr;}.hero-r{display:none;}.hero-l{padding:5rem 2rem 5rem 3rem;}
-  .hero-stats{grid-template-columns:repeat(3,1fr);}
-  .band-grid{grid-template-columns:1fr;}.band-grid .photo-frame{max-width:200px;}
-  .sk3{grid-template-columns:repeat(2,1fr);}.ct-body{grid-template-columns:1fr;}
-}
-@media(max-width:768px){
-  #nav{padding:0 1.5rem;}.nav-links{display:none;}.ham{display:flex;}
-  .wrap{padding:0 1.5rem;}.sec{padding:3.5rem 0;}
-  .profile-grid{grid-template-columns:1fr 1fr;}.sk3{grid-template-columns:1fr;}
-  .field-grid{grid-template-columns:1fr;}.aw-grid{grid-template-columns:1fr 1fr;}
-  .j-item{grid-template-columns:1fr;}.hero-stats{grid-template-columns:1fr 1fr 1fr;}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:500px){
-  .profile-grid{grid-template-columns:1fr;}.aw-grid{grid-template-columns:1fr;}
-  .hero-stats{grid-template-columns:1fr;}.gallery-grid{grid-template-columns:1fr;}
-}
-</style>
+<meta name="description" content="Portfolio of Jigme Wangchuk, Senior Forestry Officer in Bhutan, featuring forest fire management, biodiversity research, publications, and conservation work."/>
+<meta name="theme-color" content="#1A2B3C"/>
+<meta property="og:title" content="Jigme Wangchuk — Senior Forestry Officer, Bhutan"/>
+<meta property="og:description" content="Forestry, biodiversity conservation, forest fire resilience, research, and publications from Bhutan."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="Profile image.jpg"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+
 <!-- NAV -->
-<nav id="nav">
-  <div class="nav-brand" onclick="goTo('home')">
+<nav id="nav" aria-label="Primary navigation">
+  <button class="nav-brand" type="button" onclick="goTo('home')" aria-label="Jigme Wangchuk — go to home">
     <div class="nav-mark">JW</div>
     <div class="nav-name">Jigme Wangchuk<span>Senior Forestry Officer &middot; Bhutan</span></div>
-  </div>
+  </button>
   <ul class="nav-links">
     <li><button id="nb-home"     onclick="goTo('home')"    class="on">Home</button></li>
     <li><button id="nb-about"    onclick="goTo('about')">About</button></li>
@@ -294,19 +32,22 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
     <li><button id="nb-gallery"  onclick="goTo('gallery')">Gallery</button></li>
     <li><button id="nb-contact"  onclick="goTo('contact')">Contact</button></li>
   </ul>
-  <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  <a class="nav-cv" href="CURRICULUM VITAE.pdf" download>CV <span aria-hidden="true">&#8595;</span></a>
+  <button class="ham" id="ham" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
 </nav>
 
-<div class="mob" id="mob">
-  <button class="mob-x" onclick="closeMob()">&#10005;</button>
+<div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+  <button class="mob-x" type="button" onclick="closeMob()" aria-label="Close navigation menu">&#10005;</button>
   <button onclick="goTo('home');closeMob()">Home</button>
   <button onclick="goTo('about');closeMob()">About</button>
   <button onclick="goTo('research');closeMob()">Research</button>
   <button onclick="goTo('skills');closeMob()">Skills &amp; Awards</button>
   <button onclick="goTo('gallery');closeMob()">Gallery</button>
   <button onclick="goTo('contact');closeMob()">Contact</button>
+  <a href="CURRICULUM VITAE.pdf" download>Download CV</a>
 </div>
 
+<main id="main-content" tabindex="-1">
 
 <!-- ════════════════════ PAGE 1 — HOME ════════════════════ -->
 <div class="page active" id="page-home">
@@ -331,7 +72,55 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
       <div class="stat-c"><div class="stat-ico">&#128293;</div><div><span class="stat-num">National Focal</span><span class="stat-lbl">Forest Fire Management</span></div></div>
     </div>
   </div>
-  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+
+  <section class="home-showcase" aria-labelledby="focus-heading">
+    <div class="wrap">
+      <div class="showcase-head reveal">
+        <div>
+          <div class="label">Current Focus</div>
+          <h2 class="showcase-title" id="focus-heading">Science in service of <em>resilient landscapes.</em></h2>
+        </div>
+        <p class="showcase-copy">From national fire policy to field-based biodiversity research, each programme connects evidence, institutions, and communities.</p>
+      </div>
+
+      <div class="focus-grid">
+        <article class="focus-card focus-card--dark reveal">
+          <div class="focus-index">01 &middot; NATIONAL</div>
+          <div class="focus-icon" aria-hidden="true">&#128293;</div>
+          <div class="focus-kicker">Primary Programme</div>
+          <h3 class="focus-title">Forest Fire Prevention &amp; Management</h3>
+          <p class="focus-copy">Coordinating policy, early-warning approaches, inter-agency action, and technical capacity for fire-resilient forests across Bhutan.</p>
+          <button class="focus-link" type="button" onclick="goTo('about')">View professional profile <span aria-hidden="true">&#8599;</span></button>
+        </article>
+
+        <article class="focus-card reveal d1">
+          <div class="focus-index">02 &middot; EVIDENCE</div>
+          <div class="focus-icon" aria-hidden="true">&#128196;</div>
+          <div class="focus-kicker">Research Library</div>
+          <h3 class="focus-title">Publications &amp; Technical Reports</h3>
+          <p class="focus-copy">Peer-reviewed articles, field guides, management plans, and community-focused conservation strategies available in one place.</p>
+          <button class="focus-link" type="button" onclick="goTo('research')">Explore publications <span aria-hidden="true">&#8599;</span></button>
+        </article>
+
+        <article class="focus-card focus-photo reveal d2">
+          <img src="During consultation on C2C strategy.JPG" alt="Community consultation during development of a Conflict to Coexistence strategy" loading="lazy" decoding="async"/>
+          <div class="focus-photo-content">
+            <div class="focus-kicker">Field Practice</div>
+            <h3 class="focus-title">Conservation with communities</h3>
+            <p class="focus-copy">Consultation, training, monitoring, and field implementation across Bhutan's diverse landscapes.</p>
+            <button class="focus-link" type="button" onclick="goTo('gallery')">See field gallery <span aria-hidden="true">&#8599;</span></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="showcase-note reveal">
+        <p>Featured resource: <span>A Pictorial Guide to the Freshwater Fishes of Dagana</span></p>
+        <a class="dl-btn" href="A PICTORIAL GUIDE TO  THE FRESHWATER FISHES OF DAGANA    .pdf" download aria-label="Download A Pictorial Guide to the Freshwater Fishes of Dagana PDF">Download guide</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>&copy; <span class="current-year">2026</span> Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
 </div>
 
 
@@ -339,13 +128,16 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 <div class="page" id="page-about">
   <div class="page-band">
     <div class="wrap">
+      <span class="band-number" aria-hidden="true">02</span>
       <div class="band-grid">
         <div>
           <div class="label" style="color:var(--gold-lt);">Professional Profile</div>
           <h1 class="band-title">Forestry &amp;<br/><em>Conservation</em><br/>Professional</h1>
           <p class="band-para">Comprehensive experience in biodiversity conservation, ecological research, and forest management across Bhutan's diverse landscapes.</p>
-          <div style="margin-top:1.8rem;">
-            <a href="CURRICULUM VITAE.pdf" download class="btn btn-gold">&#8595; Download Full CV</a>
+          <div class="resource-actions" style="margin-top:1.8rem;">
+            <a href="CURRICULUM VITAE.pdf" download class="btn btn-gold">&#8595; CV (PDF)</a>
+            <a href="CV.docx" download class="btn btn-ghost">&#8595; CV (Word)</a>
+            <a href="jigme_card_2.html" target="_blank" rel="noopener" class="btn btn-ghost">Business Card &#8599;</a>
           </div>
         </div>
         <div>
@@ -384,18 +176,18 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
     <div class="label">Career</div>
     <h2 class="sec-h">Work Experience</h2>
 
-    <div class="tabs" id="exp-tabs">
-      <button class="tab on" onclick="switchTab('exp-tabs','exp-pos',this)">Positions Held</button>
-      <button class="tab"    onclick="switchTab('exp-tabs','exp-proj',this)">Projects &amp; Assignments</button>
+    <div class="tabs" id="exp-tabs" role="tablist" aria-label="Career information">
+      <button class="tab on" id="tab-exp-pos" role="tab" aria-selected="true" aria-controls="exp-pos" onclick="switchTab('exp-tabs','exp-pos',this)">Positions Held</button>
+      <button class="tab" id="tab-exp-proj" role="tab" aria-selected="false" aria-controls="exp-proj" onclick="switchTab('exp-tabs','exp-proj',this)">Projects &amp; Assignments</button>
     </div>
 
     <!-- POSITIONS HELD — only 3 roles -->
-    <div class="panel on" id="exp-pos">
+    <div class="panel on" id="exp-pos" role="tabpanel" aria-labelledby="tab-exp-pos">
       <div class="tl">
 
         <div class="tl-item reveal">
           <div class="tl-dot g"></div>
-          <div class="tl-period">January 2026 &ndash; Present &middot; 3 months</div>
+          <div class="tl-period">January 2026 &ndash; Present</div>
           <div class="tl-role">Senior Forestry Officer</div>
           <div class="tl-org">Forest Resources Planning &amp; Management Division &middot; Dept. of Forests and Park Services &middot; &#128205; 11001, Thimphu, Bhutan</div>
           <ul class="tl-ul">
@@ -439,16 +231,16 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
     </div>
 
     <!-- PROJECTS & ASSIGNMENTS -->
-    <div class="panel" id="exp-proj">
+    <div class="panel" id="exp-proj" role="tabpanel" aria-labelledby="tab-exp-proj" hidden>
       <div class="proj-grid">
 
         <!-- UPCOMING -->
         <div class="pc-card reveal">
           <div class="pc-band b-teal"></div>
           <div class="pc-body">
-            <div class="pc-meta"><span class="pc-upcoming">&#128197; Upcoming</span><span class="pc-yr">Jul 2026–Jun 2030</span></div>
+            <div class="pc-meta"><span class="tag-tg">Active project</span><span class="pc-yr">Jul 2026–Jun 2030</span></div>
             <div class="pc-name">Restoring Fire-Damaged Ecosystems and Enhancing Wildland-Urban Interface Resilience in Bhutan</div>
-            <div class="pc-desc">Four-year project focused on ecological restoration of fire-degraded landscapes and building resilience at the wildland-urban interface. Will involve field assessment, restoration planning, community engagement, and capacity development.</div>
+            <div class="pc-desc">Four-year project focused on ecological restoration of fire-degraded landscapes and resilience at the wildland-urban interface, involving field assessment, restoration planning, community engagement, and capacity development.</div>
           </div>
           <div class="pc-foot"><span class="pc-donor">Donor: Korea Forest Service (KFS) through AFoCO</span></div>
         </div>
@@ -557,7 +349,7 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 
     <div style="padding-bottom:2rem;"></div>
   </div>
-  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+  <footer>&copy; <span class="current-year">2026</span> Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
 </div>
 
 
@@ -565,6 +357,7 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 <div class="page" id="page-research">
   <div class="page-band">
     <div class="wrap">
+      <span class="band-number" aria-hidden="true">03</span>
       <div class="label" style="color:var(--gold-lt);">Field Studies &amp; Scholarship</div>
       <h1 class="band-title" style="font-size:clamp(2.2rem,3.5vw,3.2rem);">Research &amp;<br/><em>Publications</em></h1>
       <p class="band-para" style="max-width:620px;">Applied ecological research across Bhutan's forests, wetlands, and wildlife corridors — from ichthyofaunal surveys and entomological assessments to climate vulnerability analyses — informing national biodiversity policy and scientific literature.</p>
@@ -627,12 +420,12 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
     <div class="label">Scholarly Articles and Grey Literatures</div>
     <h2 class="sec-h">Publications</h2>
 
-    <div class="tabs" id="pubs-tabs">
-      <button class="tab on" onclick="switchTab('pubs-tabs','pubs-journals',this)">Journal Articles</button>
-      <button class="tab"    onclick="switchTab('pubs-tabs','pubs-technical',this)">Technical Reports &amp; Manuals</button>
+    <div class="tabs" id="pubs-tabs" role="tablist" aria-label="Publication types">
+      <button class="tab on" id="tab-pubs-journals" role="tab" aria-selected="true" aria-controls="pubs-journals" onclick="switchTab('pubs-tabs','pubs-journals',this)">Journal Articles</button>
+      <button class="tab" id="tab-pubs-technical" role="tab" aria-selected="false" aria-controls="pubs-technical" onclick="switchTab('pubs-tabs','pubs-technical',this)">Technical Reports &amp; Manuals</button>
     </div>
 
-    <div class="panel on" id="pubs-journals">
+    <div class="panel on" id="pubs-journals" role="tabpanel" aria-labelledby="tab-pubs-journals">
       <ul class="j-list">
         <li class="j-item reveal">
           <div>
@@ -673,11 +466,11 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
       </ul>
     </div>
 
-    <div class="panel" id="pubs-technical">
+    <div class="panel" id="pubs-technical" role="tabpanel" aria-labelledby="tab-pubs-technical" hidden>
       <ul class="t-list">
-        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Divisional Forest Office Management Plan — Dagana</div><div class="t-org">Divisional Forest Office, Dagana &middot; DoFPS</div></div></li>
-        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflicts to Co-existence (C2C) Strategy — Lhamoizingkha Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div></li>
-        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflicts to Co-existence (C2C) Strategy — Trashiding Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Divisional Forest Office Management Plan — Dagana</div><div class="t-org">Divisional Forest Office, Dagana &middot; DoFPS</div></div><a href="DFO-Management-Plan_Dagana.pdf" download class="dl-btn" aria-label="Download the DFO Dagana Management Plan PDF">PDF</a></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflict to Coexistence (C2C) Strategy — Lhamoizingkha Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div><a href="Conflict-to-Coexistence-C2C-Strategy-Lhamoizingkha-Gewog-DFO-Dagana.pdf" download class="dl-btn" aria-label="Download the Lhamoizingkha C2C Strategy PDF">PDF</a></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflict to Coexistence (C2C) Strategy — Trashiding Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div><a href="Conflict-to-Coexistence-C2C-Strategy-Trashiding-Gewog-DFO-Dagana.pdf" download class="dl-btn" aria-label="Download the Trashiding C2C Strategy PDF">PDF</a></li>
         <li class="t-item reveal"><span class="t-yr">2024</span><div><div class="t-name">Socio-economic Status and Climate Vulnerability of DFO Dagana</div><div class="t-org">IKI Living Landscape &middot; Climate Vulnerability Assessment</div></div></li>
         <li class="t-item reveal"><span class="t-yr">2023</span><div><div class="t-name">Rapid Biodiversity Assessment Report for Dagana</div><div class="t-org">BTFEC &middot; Divisional Forest Office, Dagana</div></div></li>
         <li class="t-item reveal"><span class="t-yr">2023</span><div><div class="t-name">Forest Fire Fighting Training Manual for Gyalsung</div><div class="t-org">DoFPS &middot; Gyalsuung National Service</div></div></li>
@@ -686,7 +479,7 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 
     <div style="padding-bottom:3rem;"></div>
   </div>
-  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+  <footer>&copy; <span class="current-year">2026</span> Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
 </div>
 
 
@@ -694,6 +487,7 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 <div class="page" id="page-skills">
   <div class="sk-band">
     <div class="wrap">
+      <span class="band-number" aria-hidden="true">04</span>
       <div class="label" style="color:var(--gold-lt);">Expertise &amp; Recognition</div>
       <h1 class="sk-band-title">Skills, Certifications &amp; Awards</h1>
     </div>
@@ -734,7 +528,7 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
     </div>
     <div style="padding-bottom:3rem;"></div>
   </div>
-  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+  <footer>&copy; <span class="current-year">2026</span> Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
 </div>
 
 
@@ -742,6 +536,7 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 <div class="page" id="page-gallery">
   <div class="gallery-band">
     <div class="wrap">
+      <span class="band-number" aria-hidden="true">05</span>
       <div class="label" style="color:var(--gold-lt);">Field &amp; Professional Life</div>
       <h1 class="gallery-band-title">Photo Gallery</h1>
     </div>
@@ -749,67 +544,67 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
   <div class="wrap">
     <div class="gallery-grid" id="gallery-grid">
 
-      <div class="gal-item reveal" onclick="openLightbox(0)">
-        <img src="During HCV awareness to staff.JPG" alt="HCV Awareness" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal" type="button" onclick="openLightbox(0)" aria-label="Open photo: During HCV awareness to staff">
+        <img src="During HCV awareness to staff.JPG" alt="Jigme Wangchuk conducting high conservation value awareness for staff" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">During HCV awareness to staff</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal d1" onclick="openLightbox(1)">
-        <img src="Red panda captured during Red Panda Survey.JPG" alt="Red Panda Survey" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal d1" type="button" onclick="openLightbox(1)" aria-label="Open photo: Red panda survey">
+        <img src="Red panda captured during Red Panda Survey.JPG" alt="Red panda captured during a field survey" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Red panda captured during Red Panda Survey</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal d2" onclick="openLightbox(2)">
-        <img src="ICIMOD.JPG" alt="ICIMOD" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal d2" type="button" onclick="openLightbox(2)" aria-label="Open ICIMOD photo">
+        <img src="ICIMOD.JPG" alt="Professional visit to ICIMOD" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">ICIMOD</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal" onclick="openLightbox(3)">
-        <img src="With colleagues at DFO, Dagana during the staff promotion.JPG" alt="Staff Promotion" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal" type="button" onclick="openLightbox(3)" aria-label="Open staff promotion photo">
+        <img src="With colleagues at DFO, Dagana during the staff promotion.JPG" alt="Jigme Wangchuk with colleagues at DFO Dagana during staff promotion" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">With colleagues at DFO, Dagana during staff promotion</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal d1" onclick="openLightbox(4)">
-        <img src="During consultation on C2C strategy.JPG" alt="C2C Consultation" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal d1" type="button" onclick="openLightbox(4)" aria-label="Open C2C strategy consultation photo">
+        <img src="During consultation on C2C strategy.JPG" alt="Community consultation on a Conflict to Coexistence strategy" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">During consultation on C2C strategy</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal d2" onclick="openLightbox(5)">
-        <img src="C2C consultation meeting at Lhamoizingkha.JPG" alt="C2C Meeting" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal d2" type="button" onclick="openLightbox(5)" aria-label="Open Lhamoizingkha C2C meeting photo">
+        <img src="C2C consultation meeting at Lhamoizingkha.JPG" alt="Conflict to Coexistence consultation meeting at Lhamoizingkha" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">C2C consultation meeting at Lhamoizingkha</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal" onclick="openLightbox(6)">
-        <img src="Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg" alt="Fire Suppression" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal" type="button" onclick="openLightbox(6)" aria-label="Open Ramtokto fire suppression photo">
+        <img src="Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg" alt="Climbing to Ramtokto carrying Fire Terminator solution for fire suppression" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal d1" onclick="openLightbox(7)">
-        <img src="Field visit at logging site in Germany.jpeg" alt="Germany Field Visit" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal d1" type="button" onclick="openLightbox(7)" aria-label="Open Germany field visit photo">
+        <img src="Field visit at logging site in Germany.jpeg" alt="Field visit at a logging site in Germany" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Field visit at logging site in Germany</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal d2" onclick="openLightbox(8)">
-        <img src="Firefighters at site, Ramtokto top.jpeg" alt="Firefighters at Ramtokto" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal d2" type="button" onclick="openLightbox(8)" aria-label="Open Ramtokto firefighters photo">
+        <img src="Firefighters at site, Ramtokto top.jpeg" alt="Firefighters at the Ramtokto fire site" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Firefighters at site, Ramtokto top</div>
-      </div>
+      </button>
 
-      <div class="gal-item reveal" onclick="openLightbox(9)">
-        <img src="SMART training at Dagana Range.jpeg" alt="SMART Training" onerror="this.style.display='none'"/>
+      <button class="gal-item reveal" type="button" onclick="openLightbox(9)" aria-label="Open SMART training photo">
+        <img src="SMART training at Dagana Range.jpeg" alt="SMART conservation training at Dagana Range" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">SMART training at Dagana Range</div>
-      </div>
+      </button>
 
     </div>
   </div>
-  <footer>&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+  <footer>&copy; <span class="current-year">2026</span> Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
 </div>
 
 <!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
-  <button class="lb-prev" onclick="lbNav(-1)">&#8592;</button>
-  <img class="lb-img" id="lb-img" src="" alt=""/>
-  <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true" tabindex="-1" onclick="closeLightboxOutside(event)">
+  <button class="lb-close" type="button" onclick="closeLightbox()" aria-label="Close photo viewer">&#10005;</button>
+  <button class="lb-prev" type="button" onclick="lbNav(-1)" aria-label="Previous photo">&#8592;</button>
+  <img class="lb-img" id="lb-img" alt=""/>
+  <button class="lb-next" type="button" onclick="lbNav(1)" aria-label="Next photo">&#8594;</button>
   <div class="lb-caption" id="lb-caption"></div>
 </div>
 
@@ -818,6 +613,7 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
 <div class="page" id="page-contact">
   <div class="ct-hero">
     <div class="wrap">
+      <span class="band-number" aria-hidden="true">06</span>
       <div class="label" style="color:var(--gold-lt);">Get in Touch</div>
       <h1 class="ct-title">Let's<br/><em>Connect</em></h1>
       <p class="ct-sub">Interested in research collaboration, conservation initiatives, or forestry partnerships? I'd be glad to hear from you.</p>
@@ -846,41 +642,69 @@ footer{background:#080F15;text-align:center;padding:1.5rem;font-size:.65rem;font
           <div class="cl-ico">&#128300;</div>
           <div><div class="cl-lbl">ResearchGate</div><div class="cl-val">researchgate.net/Jigme-Wangchuk-10 &#8599;</div></div>
         </a>
+        <a href="https://wa.me/97577385897" target="_blank" rel="noopener" class="qr-card" aria-label="Start a WhatsApp conversation with Jigme Wangchuk">
+          <img src="Scan me.jpeg" alt="WhatsApp QR code for Jigme Wangchuk" loading="lazy" decoding="async"/>
+          <span><strong>WhatsApp</strong>Scan the code or select this card to start a conversation.</span>
+        </a>
       </div>
-      <div class="ct-form">
+      <form class="ct-form" id="contact-form" onsubmit="doSend(event)">
         <h3>Send a Message</h3>
-        <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name"/></div>
-        <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
-        <div class="fg"><label>Subject</label><input type="text" placeholder="Research collaboration, etc."/></div>
-        <div class="fg"><label>Message</label><textarea placeholder="Your message here…"></textarea></div>
-        <button class="form-send" onclick="doSend()">Send Message &#8594;</button>
-        <p class="form-note">Or email directly at jygcen23@gmail.com</p>
-      </div>
+        <div class="fg"><label for="contact-name">Your Name</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Full name" required/></div>
+        <div class="fg"><label for="contact-email">Email Address</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required/></div>
+        <div class="fg"><label for="contact-subject">Subject</label><input id="contact-subject" name="subject" type="text" placeholder="Research collaboration, etc." required/></div>
+        <div class="fg"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="5" placeholder="Your message here…" required></textarea></div>
+        <button class="form-send" type="submit">Compose Email &#8594;</button>
+        <p class="form-note">This opens your email app with the message prepared.</p>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
-  <footer style="background:#03080A;">&copy; 2025 Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
+  <footer style="background:#03080A;">&copy; <span class="current-year">2026</span> Jigme Wangchuk &nbsp;&middot;&nbsp; Senior Forestry Officer &nbsp;&middot;&nbsp; Dept. of Forests and Park Services, Bhutan</footer>
 </div>
+
+</main>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">&#8593;</button>
 
 
 <!-- JAVASCRIPT -->
 <script>
 var PAGES = ['home','about','research','skills','gallery','contact'];
+var pageTitles = {
+  home: 'Jigme Wangchuk — Senior Forestry Officer, Bhutan',
+  about: 'About — Jigme Wangchuk',
+  research: 'Research & Publications — Jigme Wangchuk',
+  skills: 'Skills & Awards — Jigme Wangchuk',
+  gallery: 'Gallery — Jigme Wangchuk',
+  contact: 'Contact — Jigme Wangchuk'
+};
 
-function goTo(id) {
+function goTo(id, updateHash) {
+  if (PAGES.indexOf(id) === -1) id = 'home';
   for (var i = 0; i < PAGES.length; i++) {
-    document.getElementById('page-' + PAGES[i]).classList.remove('active');
+    var page = document.getElementById('page-' + PAGES[i]);
+    page.classList.remove('active');
+    page.setAttribute('aria-hidden', 'true');
     var b = document.getElementById('nb-' + PAGES[i]);
-    if (b) b.classList.remove('on');
+    if (b) { b.classList.remove('on'); b.removeAttribute('aria-current'); }
   }
-  document.getElementById('page-' + id).classList.add('active');
+  var activePage = document.getElementById('page-' + id);
+  activePage.classList.add('active');
+  activePage.setAttribute('aria-hidden', 'false');
   var btn = document.getElementById('nb-' + id);
-  if (btn) btn.classList.add('on');
-  window.scrollTo(0, 0);
+  if (btn) { btn.classList.add('on'); btn.setAttribute('aria-current', 'page'); }
+  document.title = pageTitles[id];
+  if (updateHash !== false && window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+  window.scrollTo({ top: 0, behavior: 'auto' });
   setTimeout(doReveals, 100);
 }
 
 function doReveals() {
   var els = document.querySelectorAll('.page.active .reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el) { el.classList.add('vis'); });
+    return;
+  }
   var io = new IntersectionObserver(function(entries, obs) {
     entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
@@ -892,65 +716,147 @@ function doReveals() {
 function switchTab(tabsId, panelId, clickedBtn) {
   var tabsEl = document.getElementById(tabsId);
   if (!tabsEl) return;
-  tabsEl.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('on'); });
+  tabsEl.querySelectorAll('.tab').forEach(function(t) {
+    t.classList.remove('on');
+    t.setAttribute('aria-selected', 'false');
+  });
   clickedBtn.classList.add('on');
+  clickedBtn.setAttribute('aria-selected', 'true');
   var panel = document.getElementById(panelId);
   if (!panel) return;
-  panel.parentNode.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('on'); });
+  panel.parentNode.querySelectorAll('.panel').forEach(function(p) {
+    p.classList.remove('on');
+    p.hidden = true;
+  });
   panel.classList.add('on');
+  panel.hidden = false;
   setTimeout(doReveals, 80);
 }
 
 document.getElementById('ham').addEventListener('click', function() {
-  document.getElementById('mob').classList.add('open');
+  var mob = document.getElementById('mob');
+  mob.classList.add('open');
+  mob.setAttribute('aria-hidden', 'false');
+  this.setAttribute('aria-expanded', 'true');
+  mob.querySelector('.mob-x').focus();
 });
-function closeMob() { document.getElementById('mob').classList.remove('open'); }
+function closeMob() {
+  var mob = document.getElementById('mob');
+  mob.classList.remove('open');
+  mob.setAttribute('aria-hidden', 'true');
+  document.getElementById('ham').setAttribute('aria-expanded', 'false');
+  document.getElementById('ham').focus();
+}
 
 // Lightbox
 var lbImages = [
-  { src: 'Files/During HCV awareness to staff.JPG', cap: 'During HCV awareness to staff' },
-  { src: 'Files/Red panda captured during Red Panda Survey.JPG', cap: 'Red panda captured during Red Panda Survey' },
-  { src: 'Files/ICIMOD.JPG', cap: 'ICIMOD' },
-  { src: 'Files/With colleagues at DFO, Dagana during the staff promotion.JPG', cap: 'With colleagues at DFO, Dagana during staff promotion' },
-  { src: 'Files/During consultation on C2C strategy.JPG', cap: 'During consultation on C2C strategy' },
-  { src: 'Files/C2C consultation meeting at Lhamoizingkha.JPG', cap: 'C2C consultation meeting at Lhamoizingkha' },
-  { src: 'Files/Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg', cap: 'Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression' },
-  { src: 'Files/Field visit at logging site in Germany.jpeg', cap: 'Field visit at logging site in Germany' },
-  { src: 'Files/Firefighters at site, Ramtokto top.jpeg', cap: 'Firefighters at site, Ramtokto top' },
-  { src: 'Files/SMART training at Dagana Range.jpeg', cap: 'SMART training at Dagana Range' }
+  { src: 'During HCV awareness to staff.JPG', cap: 'During HCV awareness to staff' },
+  { src: 'Red panda captured during Red Panda Survey.JPG', cap: 'Red panda captured during Red Panda Survey' },
+  { src: 'ICIMOD.JPG', cap: 'ICIMOD' },
+  { src: 'With colleagues at DFO, Dagana during the staff promotion.JPG', cap: 'With colleagues at DFO, Dagana during staff promotion' },
+  { src: 'During consultation on C2C strategy.JPG', cap: 'During consultation on C2C strategy' },
+  { src: 'C2C consultation meeting at Lhamoizingkha.JPG', cap: 'C2C consultation meeting at Lhamoizingkha' },
+  { src: 'Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg', cap: 'Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression' },
+  { src: 'Field visit at logging site in Germany.jpeg', cap: 'Field visit at logging site in Germany' },
+  { src: 'Firefighters at site, Ramtokto top.jpeg', cap: 'Firefighters at site, Ramtokto top' },
+  { src: 'SMART training at Dagana Range.jpeg', cap: 'SMART training at Dagana Range' }
 ];
 var lbCurrent = 0;
+var lbPreviousFocus = null;
+
+function renderLightbox() {
+  var image = document.getElementById('lb-img');
+  image.src = lbImages[lbCurrent].src;
+  image.alt = lbImages[lbCurrent].cap;
+  document.getElementById('lb-caption').textContent = lbImages[lbCurrent].cap;
+}
 
 function openLightbox(idx) {
   lbCurrent = idx;
-  document.getElementById('lb-img').src = lbImages[idx].src;
-  document.getElementById('lb-caption').textContent = lbImages[idx].cap;
-  document.getElementById('lightbox').classList.add('open');
+  lbPreviousFocus = document.activeElement;
+  renderLightbox();
+  var lightbox = document.getElementById('lightbox');
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  lightbox.querySelector('.lb-close').focus();
 }
-function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+function closeLightbox() {
+  var lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  document.getElementById('lb-img').removeAttribute('src');
+  if (lbPreviousFocus) lbPreviousFocus.focus();
+}
 function closeLightboxOutside(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
 function lbNav(dir) {
   lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
-  document.getElementById('lb-img').src = lbImages[lbCurrent].src;
-  document.getElementById('lb-caption').textContent = lbImages[lbCurrent].cap;
+  renderLightbox();
 }
 document.addEventListener('keydown', function(e) {
-  if (!document.getElementById('lightbox').classList.contains('open')) return;
-  if (e.key === 'ArrowLeft') lbNav(-1);
-  if (e.key === 'ArrowRight') lbNav(1);
-  if (e.key === 'Escape') closeLightbox();
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox.classList.contains('open')) {
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'Tab') {
+      var controls = lightbox.querySelectorAll('button');
+      var first = controls[0];
+      var last = controls[controls.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+    return;
+  }
+  var mobileMenu = document.getElementById('mob');
+  if (mobileMenu.classList.contains('open')) {
+    if (e.key === 'Escape') closeMob();
+    if (e.key === 'Tab') {
+      var menuControls = mobileMenu.querySelectorAll('button');
+      var menuFirst = menuControls[0];
+      var menuLast = menuControls[menuControls.length - 1];
+      if (e.shiftKey && document.activeElement === menuFirst) { e.preventDefault(); menuLast.focus(); }
+      else if (!e.shiftKey && document.activeElement === menuLast) { e.preventDefault(); menuFirst.focus(); }
+    }
+  }
 });
 
-function doSend() {
-  var fields = document.querySelectorAll('.ct-form input, .ct-form textarea');
-  var ok = true;
-  fields.forEach(function(f) { if (!f.value.trim()) ok = false; });
-  if (!ok) { alert('Please fill in all fields.'); return; }
-  alert('Thank you! Jigme will get back to you shortly.');
-  fields.forEach(function(f) { f.value = ''; });
+function doSend(event) {
+  event.preventDefault();
+  var form = event.currentTarget;
+  if (!form.reportValidity()) return;
+  var data = new FormData(form);
+  var subject = data.get('subject') + ' — message from ' + data.get('name');
+  var body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\n\n' + data.get('message');
+  document.getElementById('form-status').textContent = 'Opening your email application…';
+  window.location.href = 'mailto:jygcen23@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 
-window.addEventListener('DOMContentLoaded', function() { setTimeout(doReveals, 200); });
+function updatePageTools() {
+  var scrollable = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+  var progress = Math.min((window.scrollY / scrollable) * 100, 100);
+  document.getElementById('scroll-progress-bar').style.width = progress + '%';
+  document.getElementById('to-top').classList.toggle('show', window.scrollY > 520);
+}
+
+document.getElementById('to-top').addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+window.addEventListener('scroll', updatePageTools, { passive: true });
+window.addEventListener('resize', updatePageTools);
+
+window.addEventListener('hashchange', function() {
+  goTo(window.location.hash.slice(1), false);
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.current-year').forEach(function(el) { el.textContent = new Date().getFullYear(); });
+  var initialPage = window.location.hash.slice(1);
+  goTo(PAGES.indexOf(initialPage) > -1 ? initialPage : 'home', false);
+  updatePageTools();
+  setTimeout(doReveals, 200);
+});
 </script>
 </body>
 </html>
