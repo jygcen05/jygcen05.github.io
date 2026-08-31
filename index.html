@@ -18,6 +18,7 @@
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="idle-solar-strike" id="idle-solar-strike" aria-hidden="true"><span class="idle-sun"></span></div>
 <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
 <!-- NAV -->
@@ -1087,6 +1088,44 @@ function doSend(event) {
 
   sizeCanvas();
   startLoop();
+})();
+
+// Solar strike after 30 seconds without visitor activity
+(function() {
+  var strike = document.getElementById('idle-solar-strike');
+  if (!strike || prefersReducedMotion) return;
+
+  var IDLE_DELAY = 30000;
+  var idleTimer = null;
+  var playing = false;
+
+  function armStrike() {
+    clearTimeout(idleTimer);
+    if (playing || document.visibilityState !== 'visible') return;
+    idleTimer = setTimeout(playStrike, IDLE_DELAY);
+  }
+
+  function playStrike() {
+    if (playing || document.visibilityState !== 'visible') return;
+    playing = true;
+    strike.style.setProperty('--sun-y', (22 + Math.random() * 56).toFixed(1) + '%');
+    strike.style.setProperty('--sun-angle', (-8 + Math.random() * 16).toFixed(1) + 'deg');
+    strike.classList.add('is-active');
+  }
+
+  strike.addEventListener('animationend', function(event) {
+    if (!event.target.classList.contains('idle-sun')) return;
+    strike.classList.remove('is-active');
+    playing = false;
+    armStrike();
+  });
+
+  ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function(eventName) {
+    window.addEventListener(eventName, armStrike, { passive: true });
+  });
+
+  document.addEventListener('visibilitychange', armStrike);
+  armStrike();
 })();
 
 function updatePageTools() {
