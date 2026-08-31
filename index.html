@@ -1090,12 +1090,12 @@ function doSend(event) {
   startLoop();
 })();
 
-// Solar strike after 30 seconds without visitor activity
+// Solar strike after 10 seconds without visitor activity
 (function() {
   var strike = document.getElementById('idle-solar-strike');
   if (!strike || prefersReducedMotion) return;
 
-  var IDLE_DELAY = 30000;
+  var IDLE_DELAY = 10000;
   var idleTimer = null;
   var playing = false;
 
