@@ -5,46 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Jigme Wangchuk — Forest Fire Analyst, Bhutan</title>
 <meta name="description" content="Portfolio of Jigme Wangchuk, Senior Forestry Officer in Bhutan, featuring forest fire management, biodiversity research, publications, and conservation work."/>
-<meta name="theme-color" content="#1A2B3C"/>
+<meta name="theme-color" content="#0d0d0d"/>
 <meta property="og:title" content="Jigme Wangchuk — Senior Forestry Officer, Bhutan"/>
 <meta property="og:description" content="Forestry, biodiversity conservation, forest fire resilience, research, and publications from Bhutan."/>
 <meta property="og:type" content="website"/>
-<meta property="og:image" content="Profile image.jpg"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet"/>
+<meta property="og:image" content="images/Profile image.jpg"/>
+<link rel="icon" type="image/png" href="images/logo.png"/>
+<link rel="stylesheet" href="fonts.css"/>
 <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
 <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
 <!-- NAV -->
 <nav id="nav" aria-label="Primary navigation">
   <button class="nav-brand" type="button" onclick="goTo('home')" aria-label="Jigme Wangchuk — go to home">
-    <div class="nav-mark">JW</div>
+    <div class="nav-mark"><img src="images/logo-mark.png" alt="" aria-hidden="true"/></div>
     <div class="nav-name">Jigme Wangchuk<span>Senior Forestry Officer &middot; Bhutan</span></div>
   </button>
   <ul class="nav-links">
-    <li><button id="nb-home"     onclick="goTo('home')"    class="on">Home</button></li>
-    <li><button id="nb-about"    onclick="goTo('about')">About</button></li>
-    <li><button id="nb-research" onclick="goTo('research')">Research</button></li>
-    <li><button id="nb-skills"   onclick="goTo('skills')">Skills &amp; Awards</button></li>
-    <li><button id="nb-gallery"  onclick="goTo('gallery')">Gallery</button></li>
-    <li><button id="nb-contact"  onclick="goTo('contact')">Contact</button></li>
+    <li><button id="nb-home"     onclick="goTo('home')"    class="on"><span class="nav-idx">01</span> Home</button></li>
+    <li><button id="nb-about"    onclick="goTo('about')"><span class="nav-idx">02</span> About</button></li>
+    <li><button id="nb-research" onclick="goTo('research')"><span class="nav-idx">03</span> Research</button></li>
+    <li><button id="nb-skills"   onclick="goTo('skills')"><span class="nav-idx">04</span> Skills &amp; Awards</button></li>
+    <li><button id="nb-gallery"  onclick="goTo('gallery')"><span class="nav-idx">05</span> Gallery</button></li>
+    <li><button id="nb-contact"  onclick="goTo('contact')"><span class="nav-idx">06</span> Contact</button></li>
   </ul>
-  <a class="nav-cv" href="CURRICULUM VITAE.pdf" download>CV <span aria-hidden="true">&#8595;</span></a>
+  <a class="nav-cv" href="documents/CURRICULUM VITAE.pdf" download>CV <span aria-hidden="true">&#8595;</span></a>
   <button class="ham" id="ham" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
   <button class="mob-x" type="button" onclick="closeMob()" aria-label="Close navigation menu">&#10005;</button>
-  <button onclick="goTo('home');closeMob()">Home</button>
-  <button onclick="goTo('about');closeMob()">About</button>
-  <button onclick="goTo('research');closeMob()">Research</button>
-  <button onclick="goTo('skills');closeMob()">Skills &amp; Awards</button>
-  <button onclick="goTo('gallery');closeMob()">Gallery</button>
-  <button onclick="goTo('contact');closeMob()">Contact</button>
-  <a href="CURRICULUM VITAE.pdf" download>Download CV</a>
+  <button onclick="goTo('home');closeMob()"><span class="nav-idx">01</span> Home</button>
+  <button onclick="goTo('about');closeMob()"><span class="nav-idx">02</span> About</button>
+  <button onclick="goTo('research');closeMob()"><span class="nav-idx">03</span> Research</button>
+  <button onclick="goTo('skills');closeMob()"><span class="nav-idx">04</span> Skills &amp; Awards</button>
+  <button onclick="goTo('gallery');closeMob()"><span class="nav-idx">05</span> Gallery</button>
+  <button onclick="goTo('contact');closeMob()"><span class="nav-idx">06</span> Contact</button>
+  <a href="documents/CURRICULUM VITAE.pdf" download>Download CV</a>
 </div>
 
 <main id="main-content" tabindex="-1">
@@ -64,11 +66,11 @@
       </div>
     </div>
     <div class="hero-r">
-      <img src="Profile image.jpg" alt="Jigme Wangchuk" onerror="this.outerHTML='&lt;div class=&quot;hero-r-ph&quot;&gt;&#127807;&lt;/div&gt;'"/>
+      <img src="images/Profile image.jpg" alt="Jigme Wangchuk" onerror="this.outerHTML='&lt;div class=&quot;hero-r-ph&quot;&gt;&#127807;&lt;/div&gt;'"/>
     </div>
     <div class="hero-stats">
-      <div class="stat-c"><div class="stat-ico">&#127807;</div><div><span class="stat-num">6+</span><span class="stat-lbl">Years Experience</span></div></div>
-      <div class="stat-c"><div class="stat-ico">&#128196;</div><div><span class="stat-num">12+</span><span class="stat-lbl">Publications</span></div></div>
+      <div class="stat-c"><div class="stat-ico">&#127807;</div><div><span class="stat-num reveal" data-count-to="6" data-suffix="+">0</span><span class="stat-lbl">Years Experience</span></div></div>
+      <div class="stat-c"><div class="stat-ico">&#128196;</div><div><span class="stat-num reveal" data-count-to="11" data-suffix="+">0</span><span class="stat-lbl">Publications</span></div></div>
       <div class="stat-c"><div class="stat-ico">&#128293;</div><div><span class="stat-num">National Focal</span><span class="stat-lbl">Forest Fire Management</span></div></div>
     </div>
   </div>
@@ -103,7 +105,7 @@
         </article>
 
         <article class="focus-card focus-photo reveal d2">
-          <img src="During consultation on C2C strategy.JPG" alt="Community consultation during development of a Conflict to Coexistence strategy" loading="lazy" decoding="async"/>
+          <img src="images/During consultation on C2C strategy.JPG" alt="Community consultation during development of a Conflict to Coexistence strategy" loading="lazy" decoding="async"/>
           <div class="focus-photo-content">
             <div class="focus-kicker">Field Practice</div>
             <h3 class="focus-title">Conservation with communities</h3>
@@ -115,7 +117,7 @@
 
       <div class="showcase-note reveal">
         <p>Featured resource: <span>A Pictorial Guide to the Freshwater Fishes of Dagana</span></p>
-        <a class="dl-btn" href="A PICTORIAL GUIDE TO THE FRESHWATER FISHES OF DAGANA.pdf" download aria-label="Download A Pictorial Guide to the Freshwater Fishes of Dagana PDF">Download guide</a>
+        <a class="dl-btn" href="documents/A PICTORIAL GUIDE TO THE FRESHWATER FISHES OF DAGANA.pdf" download aria-label="Download A Pictorial Guide to the Freshwater Fishes of Dagana PDF">Download guide</a>
       </div>
     </div>
   </section>
@@ -135,14 +137,14 @@
           <h1 class="band-title">Forestry &amp;<br/><em>Conservation</em><br/>Professional</h1>
           <p class="band-para">Comprehensive experience in biodiversity conservation, ecological research, and forest management across Bhutan's diverse landscapes.</p>
           <div class="resource-actions" style="margin-top:1.8rem;">
-            <a href="CURRICULUM VITAE.pdf" download class="btn btn-gold">&#8595; CV (PDF)</a>
+            <a href="documents/CURRICULUM VITAE.pdf" download class="btn btn-gold">&#8595; CV (PDF)</a>
             <a href="CV.docx" download class="btn btn-ghost">&#8595; CV (Word)</a>
             <a href="jigme_card_2.html" target="_blank" rel="noopener" class="btn btn-ghost">Business Card &#8599;</a>
           </div>
         </div>
         <div>
           <div class="photo-frame">
-            <img src="Profile image.jpg" alt="Jigme Wangchuk" onerror="this.outerHTML='&lt;div class=&quot;photo-ph&quot;&gt;&#127807;&lt;/div&gt;'"/>
+            <img src="images/Profile image.jpg" alt="Jigme Wangchuk" onerror="this.outerHTML='&lt;div class=&quot;photo-ph&quot;&gt;&#127807;&lt;/div&gt;'"/>
           </div>
         </div>
       </div>
@@ -157,7 +159,7 @@
       <div class="pc"><div class="pc-k">Division</div><div class="pc-v">Forest Resources Planning &amp; Management</div></div>
       <div class="pc"><div class="pc-k">Location</div><div class="pc-v">&#128205; 11001, Thimphu, Bhutan</div></div>
       <div class="pc"><div class="pc-k">Education</div><div class="pc-v">B.Sc. Forestry &middot; Royal University of Bhutan</div></div>
-      <div class="pc"><div class="pc-k">Languages</div><div class="pc-v">Dzongkha &middot; English &middot; Hindi &middot; Nepali</div></div>
+      <div class="pc"><div class="pc-k">Languages</div><div class="pc-v">Dzongkha (Native) &middot; English (Fluent) &middot; Hindi &amp; Nepali (Conversational)</div></div>
     </div>
 
     <div class="hr"></div>
@@ -188,7 +190,7 @@
         <div class="tl-item reveal">
           <div class="tl-dot g"></div>
           <div class="tl-period">January 2026 &ndash; Present</div>
-          <div class="tl-role">Senior Forestry Officer</div>
+          <div class="tl-role">Senior Forestry Officer &mdash; Forest Fire &amp; Pest Management Programme</div>
           <div class="tl-org">Forest Resources Planning &amp; Management Division &middot; Dept. of Forests and Park Services &middot; &#128205; 11001, Thimphu, Bhutan</div>
           <ul class="tl-ul">
             <li>Responsible for the national Forest Fire Management Programme — overseeing policy development, inter-agency coordination, and countrywide implementation.</li>
@@ -200,8 +202,8 @@
 
         <div class="tl-item reveal">
           <div class="tl-dot g"></div>
-          <div class="tl-period">January 2025 &ndash; January 2026 &middot; 1 year 1 month</div>
-          <div class="tl-role">Senior Forestry Officer</div>
+          <div class="tl-period">January 2025 &ndash; December 2025 &middot; 11 months</div>
+          <div class="tl-role">Senior Forestry Officer &mdash; Head, FRPMS / IKI Focal</div>
           <div class="tl-org">Divisional Forest Office, Dagana &middot; Dept. of Forests and Park Services &middot; Dagana, Bhutan</div>
           <ul class="tl-ul">
             <li>Led the Forest Resources Planning and Management Section (FRPMS), responsible for forest resource planning, sustainable forest management, and coordination of landscape-level conservation initiatives.</li>
@@ -344,6 +346,39 @@
           <div class="pc-foot"><span class="pc-donor">Divisional Forest Office, Dagana</span></div>
         </div>
 
+        <!-- ICIMOD HI-REAP -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-teal"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tg">Focal Officer</span><span class="pc-yr">Ongoing</span></div>
+            <div class="pc-name">Himalayan Resilience Enabling Action Programme (HI-REAP)</div>
+            <div class="pc-desc">Focal officer for ICIMOD's HI-REAP, implementing nature-based solutions for sustainable rangeland management. Conducted a prescribed burning pilot exercise to address weed and invasive-species encroachment and mitigate climate-change impacts.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">International Centre for Integrated Mountain Development (ICIMOD)</span></div>
+        </div>
+
+        <!-- CSS Taskforce -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-gold"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-to">Taskforce Member</span><span class="pc-yr">Ongoing</span></div>
+            <div class="pc-name">Community Security Skilling (CSS) — National Gyalsung Project</div>
+            <div class="pc-desc">National taskforce member and departmental focal officer for forest firefighting training — planning, coordinating, and implementing the forest firefighting course, including the competency-based curriculum and training manual for the Gyalsung programme.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">National Gyalsung Project</span></div>
+        </div>
+
+        <!-- Technical Working Groups -->
+        <div class="pc-card reveal">
+          <div class="pc-band b-navy"></div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="tag-tn">TWG Member</span><span class="pc-yr">Ongoing</span></div>
+            <div class="pc-name">Technical Working Group Memberships</div>
+            <div class="pc-desc">Contributing member across multiple national technical working groups: Rangeland Development in Bhutan; Locally Led Adaptation (LLA) programme; Pest Risk Analysis for 24 timber species identified for export; the Adaptation Fund Large Innovation Grant proposal; and FAO's Global Firehub project proposal development for Bhutan.</div>
+          </div>
+          <div class="pc-foot"><span class="pc-donor">DoFPS &amp; National / International Partners</span></div>
+        </div>
+
       </div>
     </div>
 
@@ -434,7 +469,7 @@
             <div class="j-journal">Journal of Animal Diversity</div>
             <div class="j-authors">Wangchuk, J. et al. &middot; 2025</div>
           </div>
-          <a href="Carnivores of SWS.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+          <a href="documents/Carnivores of SWS.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
         </li>
         <li class="j-item reveal">
           <div>
@@ -443,7 +478,7 @@
             <div class="j-journal">Bhutan Journal of Natural Resources &amp; Development</div>
             <div class="j-authors">Wangchuk, J. et al. &middot; 2024</div>
           </div>
-          <a href="Coccinellid diversity.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+          <a href="documents/Coccinellid diversity.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
         </li>
         <li class="j-item reveal">
           <div>
@@ -452,7 +487,7 @@
             <div class="j-journal">Oriental Insects</div>
             <div class="j-authors">Wangchuk, J. et al. &middot; 2021</div>
           </div>
-          <a href="Six species of Coccinellidae new to Bhutan Insecta Coleoptera.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+          <a href="documents/Six species of Coccinellidae new to Bhutan Insecta Coleoptera.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
         </li>
         <li class="j-item reveal">
           <div>
@@ -461,19 +496,20 @@
             <div class="j-journal">Divisional Forest Office, Dagana</div>
             <div class="j-authors">Wangchuk, J. &middot; 2025</div>
           </div>
-          <a href="A PICTORIAL GUIDE TO THE FRESHWATER FISHES OF DAGANA.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
+          <a href="documents/A PICTORIAL GUIDE TO THE FRESHWATER FISHES OF DAGANA.pdf" download class="dl-btn" style="flex-shrink:0;white-space:nowrap;"><svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>PDF</a>
         </li>
       </ul>
     </div>
 
     <div class="panel" id="pubs-technical" role="tabpanel" aria-labelledby="tab-pubs-technical" hidden>
       <ul class="t-list">
-        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Divisional Forest Office Management Plan — Dagana</div><div class="t-org">Divisional Forest Office, Dagana &middot; DoFPS</div></div><a href="DFO-Management-Plan_Dagana.pdf" download class="dl-btn" aria-label="Download the DFO Dagana Management Plan PDF">PDF</a></li>
-        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflict to Coexistence (C2C) Strategy — Lhamoizingkha Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div><a href="Conflict-to-Coexistence-C2C-Strategy-Lhamoizingkha-Gewog-DFO-Dagana.pdf" download class="dl-btn" aria-label="Download the Lhamoizingkha C2C Strategy PDF">PDF</a></li>
-        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflict to Coexistence (C2C) Strategy — Trashiding Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div><a href="Conflict-to-Coexistence-C2C-Strategy-Trashiding-Gewog-DFO-Dagana.pdf" download class="dl-btn" aria-label="Download the Trashiding C2C Strategy PDF">PDF</a></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Divisional Forest Office Management Plan — Dagana</div><div class="t-org">Divisional Forest Office, Dagana &middot; DoFPS</div></div><a href="documents/DFO-Management-Plan_Dagana.pdf" download class="dl-btn" aria-label="Download the DFO Dagana Management Plan PDF">PDF</a></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflict to Coexistence (C2C) Strategy — Lhamoizingkha Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div><a href="documents/Conflict-to-Coexistence-C2C-Strategy-Lhamoizingkha-Gewog-DFO-Dagana.pdf" download class="dl-btn" aria-label="Download the Lhamoizingkha C2C Strategy PDF">PDF</a></li>
+        <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Conflict to Coexistence (C2C) Strategy — Trashiding Gewog</div><div class="t-org">IKI Living Landscape &middot; DoFPS</div></div><a href="documents/Conflict-to-Coexistence-C2C-Strategy-Trashiding-Gewog-DFO-Dagana.pdf" download class="dl-btn" aria-label="Download the Trashiding C2C Strategy PDF">PDF</a></li>
         <li class="t-item reveal"><span class="t-yr">2024</span><div><div class="t-name">Socio-economic Status and Climate Vulnerability of DFO Dagana</div><div class="t-org">IKI Living Landscape &middot; Climate Vulnerability Assessment</div></div></li>
         <li class="t-item reveal"><span class="t-yr">2023</span><div><div class="t-name">Rapid Biodiversity Assessment Report for Dagana</div><div class="t-org">BTFEC &middot; Divisional Forest Office, Dagana</div></div></li>
         <li class="t-item reveal"><span class="t-yr">2023</span><div><div class="t-name">Forest Fire Fighting Training Manual for Gyalsung</div><div class="t-org">DoFPS &middot; Gyalsuung National Service</div></div></li>
+        <li class="t-item reveal"><span class="t-yr">2022</span><div><div class="t-name">Curriculum on Forest Firefighting for Gyal-Suung</div><div class="t-org">DoFPS &middot; Gyalsuung National Service</div></div></li>
       </ul>
     </div>
 
@@ -515,7 +551,22 @@
       <div class="cert-c reveal"><div class="cert-ico">&#127777;</div><div><div class="cert-nm">Climate Change Vulnerability Assessment</div><div class="cert-by">IKI Living Landscape &middot; Nov 2023</div></div></div>
       <div class="cert-c reveal"><div class="cert-ico">&#128506;</div><div><div class="cert-nm">Watershed Analysis using GIS</div><div class="cert-by">Udemy &middot; Oct 2021</div></div></div>
       <div class="cert-c reveal"><div class="cert-ico">&#128167;</div><div><div class="cert-nm">Hydrogeology &amp; Springshed Management</div><div class="cert-by">Dept. of Forests &amp; Park Services &middot; Apr 2022</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#127777;</div><div><div class="cert-nm">Basic Integrated Fire Management Tools for Early Warning &amp; Decision-Making</div><div class="cert-by">FAO e-learning Academy &middot; 2026</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#127793;</div><div><div class="cert-nm">Agroforestry for Sustainable Agrifood Transformation: Introduction</div><div class="cert-by">FAO e-learning Academy &middot; 2026</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#127795;</div><div><div class="cert-nm">Agroforestry 101: Enhancing Livelihoods &amp; Ecosystem Resilience</div><div class="cert-by">RECOFTC &middot; Mar&ndash;May 2026</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#128221;</div><div><div class="cert-nm">Development of Curriculum on Forest Fire Management for Gyal-Suung Cadets</div><div class="cert-by">Dept. of Forests &amp; Park Services &middot; Sep 2023</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#127894;</div><div><div class="cert-nm">Integrated Basic Arms and Drill Training</div><div class="cert-by">Military Training Center, Bhutan &middot; Oct 2020</div></div></div>
+      <div class="cert-c reveal"><div class="cert-ico">&#127963;</div><div><div class="cert-nm">Foundational Inservice Training for Technical Service</div><div class="cert-by">Royal Institute of Management &middot; 2020</div></div></div>
     </div>
+    <div class="hr"></div>
+    <div class="label">International &amp; Regional Exposure</div>
+    <h2 class="sec-h">Conferences &amp; Workshops Attended</h2>
+    <ul class="t-list" style="margin-bottom:4rem;">
+      <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">Regional Model Forest Network</div><div class="t-org">Paro, Bhutan</div></div></li>
+      <li class="t-item reveal"><span class="t-yr">2026</span><div><div class="t-name">MKCF Knowledge Sharing Workshop</div><div class="t-org">Cambodia &amp; Vietnam</div></div></li>
+      <li class="t-item reveal"><span class="t-yr">2025</span><div><div class="t-name">Reduced Impact Logging (Cable Crane Assisted Logging Operations)</div><div class="t-org">Germany</div></div></li>
+      <li class="t-item reveal"><span class="t-yr">2023</span><div><div class="t-name">Climate Change Vulnerability Assessment Training &mdash; IKI Living Landscape</div><div class="t-org">Nepal</div></div></li>
+    </ul>
     <div class="hr"></div>
     <div class="label">Recognition</div>
     <h2 class="sec-h">Awards &amp; Achievements</h2>
@@ -545,52 +596,52 @@
     <div class="gallery-grid" id="gallery-grid">
 
       <button class="gal-item reveal" type="button" onclick="openLightbox(0)" aria-label="Open photo: During HCV awareness to staff">
-        <img src="During HCV awareness to staff.JPG" alt="Jigme Wangchuk conducting high conservation value awareness for staff" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/During HCV awareness to staff.JPG" alt="Jigme Wangchuk conducting high conservation value awareness for staff" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">During HCV awareness to staff</div>
       </button>
 
       <button class="gal-item reveal d1" type="button" onclick="openLightbox(1)" aria-label="Open photo: Red panda survey">
-        <img src="Red panda captured during Red Panda Survey.JPG" alt="Red panda captured during a field survey" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/Red panda captured during Red Panda Survey.JPG" alt="Red panda captured during a field survey" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Red panda captured during Red Panda Survey</div>
       </button>
 
       <button class="gal-item reveal d2" type="button" onclick="openLightbox(2)" aria-label="Open ICIMOD photo">
-        <img src="ICIMOD.JPG" alt="Professional visit to ICIMOD" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/ICIMOD.JPG" alt="Professional visit to ICIMOD" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">ICIMOD</div>
       </button>
 
       <button class="gal-item reveal" type="button" onclick="openLightbox(3)" aria-label="Open staff promotion photo">
-        <img src="With colleagues at DFO, Dagana during the staff promotion.JPG" alt="Jigme Wangchuk with colleagues at DFO Dagana during staff promotion" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/With colleagues at DFO, Dagana during the staff promotion.JPG" alt="Jigme Wangchuk with colleagues at DFO Dagana during staff promotion" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">With colleagues at DFO, Dagana during staff promotion</div>
       </button>
 
       <button class="gal-item reveal d1" type="button" onclick="openLightbox(4)" aria-label="Open C2C strategy consultation photo">
-        <img src="During consultation on C2C strategy.JPG" alt="Community consultation on a Conflict to Coexistence strategy" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/During consultation on C2C strategy.JPG" alt="Community consultation on a Conflict to Coexistence strategy" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">During consultation on C2C strategy</div>
       </button>
 
       <button class="gal-item reveal d2" type="button" onclick="openLightbox(5)" aria-label="Open Lhamoizingkha C2C meeting photo">
-        <img src="C2C consultation meeting at Lhamoizingkha.JPG" alt="Conflict to Coexistence consultation meeting at Lhamoizingkha" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/C2C consultation meeting at Lhamoizingkha.JPG" alt="Conflict to Coexistence consultation meeting at Lhamoizingkha" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">C2C consultation meeting at Lhamoizingkha</div>
       </button>
 
       <button class="gal-item reveal" type="button" onclick="openLightbox(6)" aria-label="Open Ramtokto fire suppression photo">
-        <img src="Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg" alt="Climbing to Ramtokto carrying Fire Terminator solution for fire suppression" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg" alt="Climbing to Ramtokto carrying Fire Terminator solution for fire suppression" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression</div>
       </button>
 
       <button class="gal-item reveal d1" type="button" onclick="openLightbox(7)" aria-label="Open Germany field visit photo">
-        <img src="Field visit at logging site in Germany.jpeg" alt="Field visit at a logging site in Germany" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/Field visit at logging site in Germany.jpeg" alt="Field visit at a logging site in Germany" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Field visit at logging site in Germany</div>
       </button>
 
       <button class="gal-item reveal d2" type="button" onclick="openLightbox(8)" aria-label="Open Ramtokto firefighters photo">
-        <img src="Firefighters at site, Ramtokto top.jpeg" alt="Firefighters at the Ramtokto fire site" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/Firefighters at site, Ramtokto top.jpeg" alt="Firefighters at the Ramtokto fire site" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">Firefighters at site, Ramtokto top</div>
       </button>
 
       <button class="gal-item reveal" type="button" onclick="openLightbox(9)" aria-label="Open SMART training photo">
-        <img src="SMART training at Dagana Range.jpeg" alt="SMART conservation training at Dagana Range" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <img src="images/SMART training at Dagana Range.jpeg" alt="SMART conservation training at Dagana Range" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
         <div class="gal-caption">SMART training at Dagana Range</div>
       </button>
 
@@ -632,7 +683,7 @@
         </a>
         <a href="tel:+97577385897" class="cl">
           <div class="cl-ico">&#128222;</div>
-          <div><div class="cl-lbl">Phone</div><div class="cl-val">+975 77385897</div></div>
+          <div><div class="cl-lbl">Phone</div><div class="cl-val">+975 77385897 &middot; +975 17475115</div></div>
         </a>
         <a href="https://www.linkedin.com/in/jigme-wangchuk-4075b61ab" target="_blank" rel="noopener" class="cl">
           <div class="cl-ico">&#128188;</div>
@@ -643,7 +694,7 @@
           <div><div class="cl-lbl">ResearchGate</div><div class="cl-val">researchgate.net/Jigme-Wangchuk-10 &#8599;</div></div>
         </a>
         <a href="https://wa.me/97577385897" target="_blank" rel="noopener" class="qr-card" aria-label="Start a WhatsApp conversation with Jigme Wangchuk">
-          <img src="Scan me.jpeg" alt="WhatsApp QR code for Jigme Wangchuk" loading="lazy" decoding="async"/>
+          <img src="images/Scan me.jpeg" alt="WhatsApp QR code for Jigme Wangchuk" loading="lazy" decoding="async"/>
           <span><strong>WhatsApp</strong>Scan the code or select this card to start a conversation.</span>
         </a>
       </div>
@@ -665,6 +716,7 @@
 </main>
 
 <button class="to-top" id="to-top" type="button" aria-label="Back to top">&#8593;</button>
+<a href="mailto:jygcen23@gmail.com" class="side-contact" aria-label="Email jygcen23@gmail.com">jygcen23@gmail.com</a>
 
 
 <!-- JAVASCRIPT -->
@@ -699,15 +751,44 @@ function goTo(id, updateHash) {
   setTimeout(doReveals, 100);
 }
 
+var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function animateCount(el) {
+  var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+  var suffix = el.getAttribute('data-suffix') || '';
+  if (prefersReducedMotion) { el.textContent = target + suffix; return; }
+  var duration = 1100;
+  var start = null;
+  function step(ts) {
+    if (start === null) start = ts;
+    var progress = Math.min((ts - start) / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 2);
+    var current = Math.round(eased * target);
+    el.textContent = progress < 1 ? current : (target + suffix);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
 function doReveals() {
   var els = document.querySelectorAll('.page.active .reveal');
   if (!('IntersectionObserver' in window)) {
-    els.forEach(function(el) { el.classList.add('vis'); });
+    els.forEach(function(el) {
+      el.classList.add('vis');
+      if (el.hasAttribute('data-count-to') && !el.dataset.counted) { el.dataset.counted = '1'; animateCount(el); }
+    });
     return;
   }
   var io = new IntersectionObserver(function(entries, obs) {
     entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        if (e.target.hasAttribute('data-count-to') && !e.target.dataset.counted) {
+          e.target.dataset.counted = '1';
+          animateCount(e.target);
+        }
+        obs.unobserve(e.target);
+      }
     });
   }, { threshold: 0.08 });
   els.forEach(function(el) { if (!el.classList.contains('vis')) io.observe(el); });
@@ -750,16 +831,16 @@ function closeMob() {
 
 // Lightbox
 var lbImages = [
-  { src: 'During HCV awareness to staff.JPG', cap: 'During HCV awareness to staff' },
-  { src: 'Red panda captured during Red Panda Survey.JPG', cap: 'Red panda captured during Red Panda Survey' },
-  { src: 'ICIMOD.JPG', cap: 'ICIMOD' },
-  { src: 'With colleagues at DFO, Dagana during the staff promotion.JPG', cap: 'With colleagues at DFO, Dagana during staff promotion' },
-  { src: 'During consultation on C2C strategy.JPG', cap: 'During consultation on C2C strategy' },
-  { src: 'C2C consultation meeting at Lhamoizingkha.JPG', cap: 'C2C consultation meeting at Lhamoizingkha' },
-  { src: 'Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg', cap: 'Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression' },
-  { src: 'Field visit at logging site in Germany.jpeg', cap: 'Field visit at logging site in Germany' },
-  { src: 'Firefighters at site, Ramtokto top.jpeg', cap: 'Firefighters at site, Ramtokto top' },
-  { src: 'SMART training at Dagana Range.jpeg', cap: 'SMART training at Dagana Range' }
+  { src: 'images/During HCV awareness to staff.JPG', cap: 'During HCV awareness to staff' },
+  { src: 'images/Red panda captured during Red Panda Survey.JPG', cap: 'Red panda captured during Red Panda Survey' },
+  { src: 'images/ICIMOD.JPG', cap: 'ICIMOD' },
+  { src: 'images/With colleagues at DFO, Dagana during the staff promotion.JPG', cap: 'With colleagues at DFO, Dagana during staff promotion' },
+  { src: 'images/During consultation on C2C strategy.JPG', cap: 'During consultation on C2C strategy' },
+  { src: 'images/C2C consultation meeting at Lhamoizingkha.JPG', cap: 'C2C consultation meeting at Lhamoizingkha' },
+  { src: 'images/Climbing up to Ramtokto top carrying Fire Terminator solutioin for fire suppression.jpeg', cap: 'Climbing to Ramtokto top carrying Fire Terminator solution for fire suppression' },
+  { src: 'images/Field visit at logging site in Germany.jpeg', cap: 'Field visit at logging site in Germany' },
+  { src: 'images/Firefighters at site, Ramtokto top.jpeg', cap: 'Firefighters at site, Ramtokto top' },
+  { src: 'images/SMART training at Dagana Range.jpeg', cap: 'SMART training at Dagana Range' }
 ];
 var lbCurrent = 0;
 var lbPreviousFocus = null;
@@ -832,6 +913,181 @@ function doSend(event) {
   document.getElementById('form-status').textContent = 'Opening your email application…';
   window.location.href = 'mailto:jygcen23@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
+
+// Particle background
+(function() {
+  var canvas = document.getElementById('bg-canvas');
+  if (!canvas || prefersReducedMotion) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var nebulae = [];
+  var width, height, dpr;
+  var resizeTimer = null;
+  var running = false;
+
+  var STAR_COLORS = ['#c8963e', '#f2f0ec', '#f2f0ec', '#bcd4f2', '#d9c4f2', '#e8c9f0'];
+  var NEBULA_COLORS = [
+    'rgba(140,90,220,0.16)', 'rgba(60,110,220,0.14)', 'rgba(200,150,62,0.1)',
+    'rgba(90,180,190,0.12)', 'rgba(200,80,190,0.1)', 'rgba(80,120,255,0.11)',
+    'rgba(160,70,200,0.13)'
+  ];
+  var galaxyCore = null;
+
+  function makeParticles() {
+    var count = Math.max(90, Math.min(220, Math.floor((width / dpr) / 8)));
+    particles = [];
+    for (var i = 0; i < count; i++) {
+      var roll = Math.random();
+      var star = roll > 0.6;
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: (star ? Math.random() * 1.7 + 1.3 : Math.random() * 1 + 0.5) * dpr,
+        vx: (Math.random() - 0.5) * 0.09 * dpr,
+        vy: (Math.random() - 0.5) * 0.09 * dpr,
+        baseA: star ? (Math.random() * 0.35 + 0.5) : (Math.random() * 0.3 + 0.18),
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.0018 + 0.0006,
+        star: star,
+        color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)]
+      });
+    }
+    nebulae = [];
+    var nCount = Math.max(5, Math.min(9, Math.floor((width / dpr) / 300)));
+    for (var j = 0; j < nCount; j++) {
+      nebulae.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: (Math.random() * 320 + 260) * dpr,
+        vx: (Math.random() - 0.5) * 0.012 * dpr,
+        vy: (Math.random() - 0.5) * 0.012 * dpr,
+        color: NEBULA_COLORS[j % NEBULA_COLORS.length]
+      });
+    }
+    galaxyCore = {
+      x: width * (0.62 + Math.random() * 0.2),
+      y: height * (0.18 + Math.random() * 0.25),
+      rx: (Math.random() * 90 + 150) * dpr,
+      ry: (Math.random() * 40 + 55) * dpr,
+      rot: Math.random() * Math.PI,
+      vx: (Math.random() - 0.5) * 0.008 * dpr,
+      vy: (Math.random() - 0.5) * 0.008 * dpr
+    };
+  }
+
+  function sizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = canvas.width = window.innerWidth * dpr;
+    height = canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    makeParticles();
+  }
+
+  function drawStar(p, alpha, color) {
+    var len = p.r * 4.2;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = Math.max(p.r * 0.35, 0.5);
+    ctx.beginPath();
+    ctx.moveTo(p.x - len, p.y); ctx.lineTo(p.x + len, p.y);
+    ctx.moveTo(p.x, p.y - len); ctx.lineTo(p.x, p.y + len);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawNebulae() {
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (var i = 0; i < nebulae.length; i++) {
+      var n = nebulae[i];
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < -n.r) n.x = width + n.r; if (n.x > width + n.r) n.x = -n.r;
+      if (n.y < -n.r) n.y = height + n.r; if (n.y > height + n.r) n.y = -n.r;
+      var grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
+      grad.addColorStop(0, n.color);
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(n.x - n.r, n.y - n.r, n.r * 2, n.r * 2);
+    }
+    ctx.restore();
+  }
+
+  function drawGalaxyCore() {
+    var g = galaxyCore;
+    if (!g) return;
+    g.x += g.vx; g.y += g.vy;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.translate(g.x, g.y);
+    ctx.rotate(g.rot);
+    ctx.scale(1, g.ry / g.rx);
+    var grad = ctx.createRadialGradient(0, 0, 0, 0, 0, g.rx);
+    grad.addColorStop(0, 'rgba(230,220,255,0.16)');
+    grad.addColorStop(0.35, 'rgba(170,120,230,0.1)');
+    grad.addColorStop(0.7, 'rgba(90,90,190,0.05)');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(0, 0, g.rx, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function draw(ts) {
+    ctx.clearRect(0, 0, width, height);
+    drawGalaxyCore();
+    drawNebulae();
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+      var twinkle = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(ts * p.speed + p.phase));
+      var alpha = p.baseA * twinkle;
+      var color = p.color;
+      if (p.star) {
+        drawStar(p, alpha, color);
+      } else {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
+
+  function loop(ts) {
+    if (document.visibilityState !== 'visible') { running = false; return; }
+    draw(ts || 0);
+    requestAnimationFrame(loop);
+  }
+
+  function startLoop() {
+    if (running) return;
+    running = true;
+    requestAnimationFrame(loop);
+  }
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible') startLoop();
+  });
+
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(sizeCanvas, 150);
+  });
+
+  sizeCanvas();
+  startLoop();
+})();
 
 function updatePageTools() {
   var scrollable = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
