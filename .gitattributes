@@ -1,0 +1,17 @@
+# Normalize text files to LF so the repo looks identical on every device
+* text=auto eol=lf
+
+# Never let Git touch these as text (prevents corruption across devices/OSes)
+*.pdf binary
+*.docx binary
+*.doc binary
+*.jpg binary
+*.JPG binary
+*.jpeg binary
+*.JPEG binary
+*.png binary
+*.PNG binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
