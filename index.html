@@ -18,7 +18,7 @@
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
-<div class="idle-solar-strike" id="idle-solar-strike" aria-hidden="true"><span class="idle-sun"></span></div>
+<div class="idle-meteor-strike" id="idle-meteor-strike" aria-hidden="true"><span class="idle-meteor"></span></div>
 <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
 <!-- NAV -->
@@ -35,7 +35,7 @@
     <li><button id="nb-gallery"  onclick="goTo('gallery')"><span class="nav-idx">05</span> Gallery</button></li>
     <li><button id="nb-contact"  onclick="goTo('contact')"><span class="nav-idx">06</span> Contact</button></li>
   </ul>
-  <a class="nav-cv" href="documents/CURRICULUM VITAE.pdf" download>CV <span aria-hidden="true">&#8595;</span></a>
+  <a class="nav-cv" href="documents/CV.pdf" download>CV <span aria-hidden="true">&#8595;</span></a>
   <button class="ham" id="ham" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
 </nav>
 
@@ -47,7 +47,7 @@
   <button onclick="goTo('skills');closeMob()"><span class="nav-idx">04</span> Skills &amp; Awards</button>
   <button onclick="goTo('gallery');closeMob()"><span class="nav-idx">05</span> Gallery</button>
   <button onclick="goTo('contact');closeMob()"><span class="nav-idx">06</span> Contact</button>
-  <a href="documents/CURRICULUM VITAE.pdf" download>Download CV</a>
+  <a href="documents/CV.pdf" download>Download CV</a>
 </div>
 
 <main id="main-content" tabindex="-1">
@@ -138,8 +138,8 @@
           <h1 class="band-title">Forestry &amp;<br/><em>Conservation</em><br/>Professional</h1>
           <p class="band-para">Comprehensive experience in biodiversity conservation, ecological research, and forest management across Bhutan's diverse landscapes.</p>
           <div class="resource-actions" style="margin-top:1.8rem;">
-            <a href="documents/CURRICULUM VITAE.pdf" download class="btn btn-gold">&#8595; CV (PDF)</a>
-            <a href="CV.docx" download class="btn btn-ghost">&#8595; CV (Word)</a>
+            <a href="documents/CV.pdf" download class="btn btn-gold">&#8595; CV (PDF)</a>
+            <a href="documents/CV.docx" download class="btn btn-ghost">&#8595; CV (Word)</a>
             <a href="jigme_card_2.html" target="_blank" rel="noopener" class="btn btn-ghost">Business Card &#8599;</a>
           </div>
         </div>
@@ -1090,9 +1090,9 @@ function doSend(event) {
   startLoop();
 })();
 
-// Solar strike after 10 seconds without visitor activity
+// Burning meteor after 10 seconds without visitor activity
 (function() {
-  var strike = document.getElementById('idle-solar-strike');
+  var strike = document.getElementById('idle-meteor-strike');
   if (!strike || prefersReducedMotion) return;
 
   var IDLE_DELAY = 10000;
@@ -1108,13 +1108,13 @@ function doSend(event) {
   function playStrike() {
     if (playing || document.visibilityState !== 'visible') return;
     playing = true;
-    strike.style.setProperty('--sun-y', (22 + Math.random() * 56).toFixed(1) + '%');
-    strike.style.setProperty('--sun-angle', (-8 + Math.random() * 16).toFixed(1) + 'deg');
+    strike.style.setProperty('--meteor-y', (18 + Math.random() * 44).toFixed(1) + '%');
+    strike.style.setProperty('--meteor-angle', (5 + Math.random() * 7).toFixed(1) + 'deg');
     strike.classList.add('is-active');
   }
 
   strike.addEventListener('animationend', function(event) {
-    if (!event.target.classList.contains('idle-sun')) return;
+    if (!event.target.classList.contains('idle-meteor')) return;
     strike.classList.remove('is-active');
     playing = false;
     armStrike();
