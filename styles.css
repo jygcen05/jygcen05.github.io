@@ -35,11 +35,11 @@ button{font-family:inherit;cursor:pointer;}
 
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:900;height:68px;background:rgba(10,10,10,.86);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 3.5rem;border-bottom:1px solid rgba(200,150,62,.16);box-shadow:0 8px 28px rgba(0,0,0,.4);}
-.nav-brand{display:flex;align-items:center;gap:.75rem;cursor:pointer;background:none;border:0;text-align:left;}
+.nav-brand{display:flex;align-items:center;gap:1.1rem;cursor:pointer;background:none;border:0;text-align:left;}
 .nav-mark{height:38px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .nav-mark img{height:100%;width:auto;object-fit:contain;}
-.nav-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.2;}
-.nav-name span{display:block;font-family:var(--font-mono);font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.48);}
+.nav-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.3;}
+.nav-name span{display:block;margin-top:.3rem;font-family:var(--font-mono);font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.48);}
 .nav-links{display:flex;gap:.1rem;list-style:none;align-items:center;}
 .nav-links button{padding:.5rem .8rem;background:none;border:none;font-family:var(--font-mono);font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);border-radius:4px;transition:color .2s,background .2s;}
 .nav-links button:hover{color:var(--white);background:rgba(255,255,255,.07);}
